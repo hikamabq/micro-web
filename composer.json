@@ -1,0 +1,17 @@
+{
+    "require": {
+        "yiisoft/yii2": "~2.0.45",
+        "twbs/bootstrap": "^5.3"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    }
+}
