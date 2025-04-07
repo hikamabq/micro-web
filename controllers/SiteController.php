@@ -24,4 +24,8 @@ class SiteController extends Controller
             'posts' => $posts
         ]);
     }
+    public function actionTest()
+    {
+        return 'hello';
+    }
 }
