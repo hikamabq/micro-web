@@ -479,3 +479,9 @@
             </tr>
         </tfoot>
     </table>
+
+<?php
+$script = <<<JS
+new DataTable('#example');
+JS;
+$this->registerJs($script);

@@ -6,7 +6,7 @@ ini_set('date.timezone', 'Asia/Jakarta');
 // $db = require __DIR__ . '/db.php';
 $baseUrl = str_replace('/web', '', (new Request)->getBaseUrl());
 
-return [
+$config = [
     'id' => 'micro-app',
     // the basePath of the application will be the `micro-app` directory
     'basePath' => __DIR__,
@@ -15,6 +15,8 @@ return [
     // set an alias to enable autoloading of classes from the 'micro' namespace
     'aliases' => [
         '@micro' => __DIR__,
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
@@ -29,6 +31,18 @@ return [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => false,
             'authTimeout' => 300,
+        ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
         ],
         'db' => [
             'class' => 'yii\db\Connection',
@@ -51,3 +65,15 @@ return [
         ],
     ]
 ];
+
+if (YII_ENV_DEV) {
+    // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
+        // uncomment the following to add your IP if you are not connecting from localhost.
+        //'allowedIPs' => ['127.0.0.1', '::1'],
+    ];
+}
+
+return $config;
