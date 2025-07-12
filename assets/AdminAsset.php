@@ -21,12 +21,12 @@ class AdminAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/bootstrap.min.css',
-        'datatables/datatables.min.css',
+        // 'datatables/datatables.min.css',
         'css/site.css',
     ];
     public $js = [
         'js/bootstrap.bundle.min.js',
-        'datatables/datatables.min.js',
+        // 'datatables/datatables.min.js',
         'js/custom.js',
     ];
     public $depends = [
