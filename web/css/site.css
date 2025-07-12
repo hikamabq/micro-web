@@ -4,19 +4,14 @@
 :root{
 	/*orange template*/
     --color-theme:#84cc16;
-	--color-main: #84cc16;
-	--color-active: rgba(255,255,255,0.1);
-	--color-secondary: #84cc16;
-	--color-accent: #84cc16;
+	--color-active: rgba(255,255,255,0.2);
 	--color-dark: #84cc16;
 	--color-dark-hover: #84cc16;
 	--color-light: #cbd5e1;
-	--bg-gradient: linear-gradient(to bottom, #fff, #fff);
+	--bg-gradient: linear-gradient(to bottom, #020617, #020617);
 	--color-toggle: #25314b;
 	--color-hover: #25314b;
 	--color-li: rgba(255, 255, 255, 1);
-	--color-span: #fff;
-	--color-blue: #fff;
 	--color-content: #ffffff;
 	/* --color-content: #fafaf9; */
 	/* --color-content: #f3f5f9; */
@@ -111,7 +106,7 @@ label .la-angle-down{
 	top: 0;
 	height: 100%;
 	padding: 1rem;
-	/* background: var(--color-main); */
+	/* background: var(--color-theme); */
 	background: var(--bg-gradient);
 	z-index: 20;
 	border-right: 1px #eee solid;
@@ -230,7 +225,7 @@ label .la-angle-down{
 	color: var(--color-dark) !important;
 }
 .active-menu svg{
-	color: var(--color-accent);
+	color: var(--color-theme);
 }
 
 header{
@@ -323,7 +318,7 @@ main{
 	color: #94a3b8;
 }
 .breadcrumb-item.active {
-    color: var(--color-main) !important;
+    color: var(--color-theme) !important;
     background: transparent;
 }
 .breadcrumb-item + .breadcrumb-item::before {
@@ -337,8 +332,8 @@ main{
 	font-weight: bold;
 }
 
-.menu-orange{
-	background: var(--color-theme);
+.menu-active{
+	background: var(--color-active);
 	color: #ffffff;
 	border-radius: 0.3rem;
 	font-weight: bold;

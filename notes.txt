@@ -1,0 +1,7 @@
+admin/
+    controllers/
+        DefaultController.php
+        PagesController.php
+        PostsController.php
+        SettingsController.php 
+    
