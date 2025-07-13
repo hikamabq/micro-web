@@ -31,20 +31,20 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
     <input type="checkbox" name="" id="sidebar-toggle">
     <div class="sidebar">
-        <div class="mb-3 d-flex align-items-center justify-content-start">
-            <div class="me-2">
+        <div class="mb-3 d-flex align-items-center justify-content-start border-bottom border-secondary border-opacity-50 pb-1">
+            <div class="me-3">
                 <img src="<?= Url::to('@web/logo.svg') ?>" width="25px" alt="">
             </div>
             <div>
-                <span class="text-light d-block">YiiCome</span>
-                <span class="text-dark small bg-light d-block rounded-1 px-2">Yii CMS from hicome</span>
+                <span class="text-light d-block fw-bold">YiiCome</span>
+                <span class="text-light text-opacity-50 small d-block rounded-1">Yii CMS from hicome</span>
             </div>
         </div>
 
         <div class="sidebar-main">
-            <div class="sidebar-menu pt-3">
+            <div class="sidebar-menu">
                 <a href="<?= Url::to('/admin') ?>" class=" d-block p-2 mb-0 rounded d-flex align-items-center <?= (Yii::$app->controller->id == 'default' ? 'menu-active' : 'text-light text-opacity-75 list-menu') ?> ">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-layout-grid"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /></svg>
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-layout-grid"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /></svg>
                     <span class="ps-2">Dashboard</span>
                 </a>
                 <?= Menu::pages(); ?>
@@ -73,18 +73,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                  ?>
             </div>
         </header>
-        <div class="bg-white mb-3">
-            <?php if (!empty($this->params['breadcrumbs'])): ?>
-                <?= Breadcrumbs::widget([
-                    'homeLink' => [ 
-                        'label' => 'Dashboard',
-                        'url' => '/admin',
-                    ],
-                    'links' => $this->params['breadcrumbs']
-                ]) ?>
-            <?php endif ?>
-        </div>
-        <main class="px-4 pt-0 pb-5">
+        <main class="px-4 pt-3 pb-5">
             <?= Alert::widget() ?>
             <?= $content ?>
         </main>

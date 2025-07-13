@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 /** @var app\modules\admin\models\posts\PostsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Posts';
+$this->title = ucfirst($model->name);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="posts-index">
@@ -26,18 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'id_pages',
+            // 'id',
+            // 'id_pages',
             'title',
-            'slug',
+            // 'slug',
             'cover_image',
-            //'content:ntext',
+            'content:ntext',
             //'author',
-            //'status',
+            'status',
             //'created_at',
             //'updated_at',
             //'deleted_at',

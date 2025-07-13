@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\models\pages\Pages;
 use app\modules\admin\models\posts\Posts;
 use app\modules\admin\models\posts\PostsSearch;
 use yii\web\Controller;
@@ -44,6 +45,19 @@ class PostsController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionPage($slug)
+    {
+        $model = Pages::findOne(['slug' => $slug]);
+        $searchModel = new PostsSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 

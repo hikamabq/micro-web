@@ -47,7 +47,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/test' => 'site/test',
+                'admin/page/<slug>' => 'admin/posts/page',
             ],
         ],
     ],
