@@ -1,7 +1,7 @@
 {
     "name": "hicome/yiicome",
     "description": "Yii CMS from hicome",
-    "type": "library",
+    "type": "project",
     "license": "MIT",
     "authors": [
         {
