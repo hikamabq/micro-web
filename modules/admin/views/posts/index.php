@@ -1,24 +1,24 @@
 <?php
 
-use app\modules\admin\models\pages\Pages;
+use app\modules\admin\models\posts\Posts;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /** @var yii\web\View $this */
-/** @var app\modules\admin\models\pages\PagesSearch $searchModel */
+/** @var app\modules\admin\models\posts\PostsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Pages';
+$this->title = 'Posts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pages-index">
+<div class="posts-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Pages', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Posts', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -26,18 +26,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        // 'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'name',
+
+            'id',
+            'id_pages',
+            'title',
             'slug',
-            'description',
-            // 'created_at',
+            'cover_image',
+            //'content:ntext',
+            //'author',
+            //'status',
+            //'created_at',
             //'updated_at',
             //'deleted_at',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Pages $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Posts $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

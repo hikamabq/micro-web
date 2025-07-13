@@ -5,3 +5,6 @@ admin/
         PostsController.php
         SettingsController.php 
     
+
+pages 
+- id

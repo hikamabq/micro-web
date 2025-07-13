@@ -32,10 +32,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <div class="sidebar">
         <div class="mb-3 d-flex align-items-center justify-content-start">
             <div class="me-2">
-                <img src="<?= Url::to('@web/logo.svg') ?>" width="39px" alt="">
+                <img src="<?= Url::to('@web/logo.svg') ?>" width="25px" alt="">
             </div>
             <div>
-                <span class="text-light d-block lead">YiiCome</span>
+                <span class="text-light d-block">YiiCome</span>
                 <span class="text-dark small bg-light d-block rounded-1 px-2">Yii CMS from hicome</span>
             </div>
         </div>
@@ -47,15 +47,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     <span class="ps-2">Dashboard</span>
                 </a>
                 <div class="mb-1 mt-3 px-2 small text-light">Pages</div>
-                <a href="<?= Url::to('/admin/post') ?>" class=" d-block p-2 mb-0 rounded d-flex align-items-center <?= (Yii::$app->controller->id == 'post' ? 'menu-active' : 'text-secondary list-menu') ?> ">
+                <a href="<?= Url::to('/admin/posts') ?>" class=" d-block p-2 mb-0 rounded d-flex align-items-center <?= (Yii::$app->controller->id == 'posts' ? 'menu-active' : 'text-secondary list-menu') ?> ">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" /><path d="M4 6v6c0 1.657 3.582 3 8 3c.415 0 .822 -.012 1.22 -.035" /><path d="M20 10v-4" /><path d="M4 12v6c0 1.657 3.582 3 8 3c.352 0 .698 -.009 1.037 -.025" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg>
                     <span class="ps-2">Berita</span>
                 </a>
-                <a href="<?= Url::to('/admin/post') ?>" class=" d-block p-2 mb-0 rounded d-flex align-items-center <?= (Yii::$app->controller->id == 'post' ? 'menu-active' : 'text-secondary list-menu') ?> ">
+                <a href="<?= Url::to('/admin/posts') ?>" class=" d-block p-2 mb-0 rounded d-flex align-items-center <?= (Yii::$app->controller->id == 'posts' ? 'menu-active' : 'text-secondary list-menu') ?> ">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" /><path d="M4 6v6c0 1.657 3.582 3 8 3c.415 0 .822 -.012 1.22 -.035" /><path d="M20 10v-4" /><path d="M4 12v6c0 1.657 3.582 3 8 3c.352 0 .698 -.009 1.037 -.025" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg>
                     <span class="ps-2">Artikel</span>
                 </a>
-                <div class="mb-1 mt-3 px-2 small text-light">Settings</div>
+                <div class="mb-1 mt-3 px-2 small text-light">Management</div>
                 <a href="<?= Url::to('/admin/pages') ?>" class=" d-block p-2 mb-0 rounded d-flex align-items-center <?= (Yii::$app->controller->id == 'pages' ? 'menu-active' : 'text-secondary list-menu') ?> ">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" /><path d="M4 6v6c0 1.657 3.582 3 8 3c.415 0 .822 -.012 1.22 -.035" /><path d="M20 10v-4" /><path d="M4 12v6c0 1.657 3.582 3 8 3c.352 0 .698 -.009 1.037 -.025" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg>
                     <span class="ps-2">Pages</span>
@@ -71,6 +71,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 <a href="<?= Url::to('/admin/profile') ?>" class=" d-block p-2 mb-0 rounded d-flex align-items-center <?= (Yii::$app->controller->id == 'profile' ? 'menu-active' : 'text-secondary list-menu') ?> ">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" /><path d="M4 6v6c0 1.657 3.582 3 8 3c.415 0 .822 -.012 1.22 -.035" /><path d="M20 10v-4" /><path d="M4 12v6c0 1.657 3.582 3 8 3c.352 0 .698 -.009 1.037 -.025" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg>
                     <span class="ps-2">Footer</span>
+                </a>
+                <a href="<?= Url::to('/admin/profile') ?>" class=" d-block p-2 mb-0 rounded d-flex align-items-center <?= (Yii::$app->controller->id == 'profile' ? 'menu-active' : 'text-secondary list-menu') ?> ">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" /><path d="M4 6v6c0 1.657 3.582 3 8 3c.415 0 .822 -.012 1.22 -.035" /><path d="M20 10v-4" /><path d="M4 12v6c0 1.657 3.582 3 8 3c.352 0 .698 -.009 1.037 -.025" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg>
+                    <span class="ps-2">Settings</span>
                 </a>
             </div>
         </div>

@@ -2,16 +2,16 @@
 
 namespace app\modules\admin\controllers;
 
-use app\modules\admin\models\pages\Pages;
-use app\modules\admin\models\pages\PagesSearch;
+use app\modules\admin\models\posts\Posts;
+use app\modules\admin\models\posts\PostsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PagesController implements the CRUD actions for Pages model.
+ * PostsController implements the CRUD actions for Posts model.
  */
-class PagesController extends Controller
+class PostsController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class PagesController extends Controller
     }
 
     /**
-     * Lists all Pages models.
+     * Lists all Posts models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new PagesSearch();
+        $searchModel = new PostsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class PagesController extends Controller
     }
 
     /**
-     * Displays a single Pages model.
+     * Displays a single Posts model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class PagesController extends Controller
     }
 
     /**
-     * Creates a new Pages model.
+     * Creates a new Posts model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Pages();
+        $model = new Posts();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class PagesController extends Controller
     }
 
     /**
-     * Updates an existing Pages model.
+     * Updates an existing Posts model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class PagesController extends Controller
     }
 
     /**
-     * Deletes an existing Pages model.
+     * Deletes an existing Posts model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class PagesController extends Controller
     }
 
     /**
-     * Finds the Pages model based on its primary key value.
+     * Finds the Posts model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Pages the loaded model
+     * @return Posts the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Pages::findOne(['id' => $id])) !== null) {
+        if (($model = Posts::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
