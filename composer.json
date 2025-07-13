@@ -9,7 +9,6 @@
             "email": "abqoryul@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
         "yiisoft/yii2": "~2.0.52",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
