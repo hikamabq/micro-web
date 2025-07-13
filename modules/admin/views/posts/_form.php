@@ -16,8 +16,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'cover_image')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
@@ -26,14 +24,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'deleted_at')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+    <div class="form-group mt-3">
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success px-3']) ?>
+        <?= Html::a('Cancel', ['index'], ['class' => 'btn btn-light text-danger px-3']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

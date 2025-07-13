@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Pages', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Pages', ['create'], ['class' => 'btn btn-success px-3']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -27,16 +27,35 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         // 'filterModel' => $searchModel,
+        'layout' => '{items}{summary}{pager}',
+        'tableOptions' => [
+            'class' => 'table table-bordered'
+        ],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'headerOptions' => [
+                    'style' => 'width:40px; min-width:40px; max-width:40px;'
+                ],
+                'contentOptions' => [
+                    'class' => 'text-center'
+                ],
+                'header' => '',
+                'class' => 'yii\grid\SerialColumn'
+            ],
             'name',
-            'slug',
+            [
+                'attribute' => 'slug',
+                'value' => function($model){
+                    return '/'.$model->slug;
+                }
+            ],
             'description',
             // 'created_at',
             //'updated_at',
             //'deleted_at',
             [
                 'class' => ActionColumn::className(),
+                'template' => '{update} {delete}',
                 'urlCreator' => function ($action, Pages $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

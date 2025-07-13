@@ -6,5 +6,36 @@ admin/
         SettingsController.php 
     
 
-pages 
-- id
+ID 
+ID Pages 
+Title
+Subtitle
+Slug
+Cover Image
+Content
+Author
+
+
+------------
+HEADER
+------------
+------------
+SECTION 1 +
+    - Cover Image 
+    - Title 
+    - Subtitle
+SECTION 2 +
+    - POST A 
+        Title
+        Subtitle
+        Slug
+        Cover Image
+        Content
+        Author
+    - POST B
+    - POST C
+SECTION 3 +
+------------
+------------
+FOOTER
+------------
