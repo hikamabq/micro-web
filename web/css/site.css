@@ -499,7 +499,7 @@ main{
 }
 
 .menu-active{
-	background: var(--color-active);
+	background: #27272a;
 	color: #ffffff;
 	border-radius: 0;
 	font-weight: bold;

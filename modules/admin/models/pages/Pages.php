@@ -25,6 +25,7 @@ class Pages extends \yii\db\ActiveRecord
             [
                 'class' => SluggableBehavior::class,
                 'attribute' => 'name',
+                'ensureUnique' => true,
                 // 'slugAttribute' => 'slug',
             ],
         ];
