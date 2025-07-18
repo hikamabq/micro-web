@@ -1,6 +1,7 @@
 <?php
 
 use app\modules\admin\models\posts\Posts;
+use app\widgets\Ui;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -15,5 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="posts-index">
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php echo Yii::$app->view->renderFile('@app/components/post_1.php', ['model' => $posts]); ?>
+
+    <label for="" class="control-label">Banner</label>
+    <?= Ui::banner() ?>
+    <label for="" class="control-label">Posts</label>
+    <?= Ui::posts() ?>
 </div>
