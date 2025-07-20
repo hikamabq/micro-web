@@ -108,7 +108,7 @@ label .la-angle-down{
 	/* background: var(--color-theme); */
 	background: var(--bg-gradient);
 	z-index: 20;
-	border-right: 1px #eee solid;
+	border-right: 1px #eee var(--color-theme);
 	transition: left 300ms;
 	scrollbar-width: thin;
 	overflow-y: auto;

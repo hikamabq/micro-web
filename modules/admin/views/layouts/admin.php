@@ -77,7 +77,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                  ?>
             </div>
         </header>
-        <main class="px-4 pt-3 pb-5">
+        <main class="">
             <?= Alert::widget() ?>
             <?= $content ?>
         </main>

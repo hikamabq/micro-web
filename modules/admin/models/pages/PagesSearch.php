@@ -18,7 +18,7 @@ class PagesSearch extends Pages
     {
         return [
             [['id'], 'integer'],
-            [['name', 'slug', 'description', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
+            [['name', 'slug', 'description', 'layout', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
         ];
     }
 

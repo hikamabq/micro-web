@@ -13,7 +13,7 @@ use yii\widgets\Pjax;
 $this->title = 'Pages';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pages-index">
+<div class="pages-index p-3">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -3,6 +3,7 @@ CREATE TABLE `pages` (
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `description` varchar(255) NULL,
+  'layout' varchar(255) NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `deleted_at` datetime DEFAULT NULL,

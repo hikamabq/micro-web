@@ -77,6 +77,7 @@ class PagesController extends Controller
             $model->loadDefaultValues();
         }
 
+        $this->layout = 'pagebuilder';
         return $this->render('create', [
             'model' => $model,
         ]);
