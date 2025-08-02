@@ -52,7 +52,7 @@ class PostsController extends Controller
     {
         $model = Pages::findOne(['slug' => $pages]);
         $searchModel = new PostsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = $searchModel->search($model->id, $this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

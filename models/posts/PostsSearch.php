@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\admin\models\posts;
+namespace app\models\posts;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\admin\models\posts\Posts;
+use app\models\posts\Posts;
 
 /**
- * PostsSearch represents the model behind the search form of `app\modules\admin\models\posts\Posts`.
+ * PostsSearch represents the model behind the search form of `app\models\posts\Posts`.
  */
 class PostsSearch extends Posts
 {
@@ -39,9 +39,9 @@ class PostsSearch extends Posts
      *
      * @return ActiveDataProvider
      */
-    public function search($pages, $params, $formName = null)
+    public function search($params, $formName = null)
     {
-        $query = Posts::find();
+        $query = Posts::find()->joinWith(['page']);
 
         // add conditions that should always apply here
 
@@ -60,7 +60,7 @@ class PostsSearch extends Posts
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_pages' => $pages,
+            'id_pages' => $this->id_pages,
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

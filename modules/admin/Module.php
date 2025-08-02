@@ -2,6 +2,8 @@
 
 namespace app\modules\admin;
 
+use yii\filters\AccessControl;
+
 // use app\commands\Helpers;
 
 /**
@@ -23,11 +25,21 @@ class Module extends \yii\base\Module
 
         // custom initialization code goes here
     }
-    // public function behaviors()
-    // {
-    //     return array_merge(
-    //         parent::behaviors(),
-    //         Helpers::accessControl()
-    //     );
-    // }
+    public function behaviors()
+    {
+        return array_merge(
+            parent::behaviors(),
+            [
+                'access' => [
+                    'class' => AccessControl::className(),
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
+                    ],
+                ],
+            ]
+        );
+    }
 }

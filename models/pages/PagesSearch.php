@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\admin\models\posts;
+namespace app\models\pages;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\admin\models\posts\Posts;
+use app\models\pages\Pages;
 
 /**
- * PostsSearch represents the model behind the search form of `app\modules\admin\models\posts\Posts`.
+ * PagesSearch represents the model behind the search form of `app\models\pages\Pages`.
  */
-class PostsSearch extends Posts
+class PagesSearch extends Pages
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class PostsSearch extends Posts
     public function rules()
     {
         return [
-            [['id', 'id_pages', 'status'], 'integer'],
-            [['title', 'slug', 'cover_image', 'content', 'author', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'slug', 'layout', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
         ];
     }
 
@@ -39,9 +39,9 @@ class PostsSearch extends Posts
      *
      * @return ActiveDataProvider
      */
-    public function search($pages, $params, $formName = null)
+    public function search($params, $formName = null)
     {
-        $query = Posts::find();
+        $query = Pages::find();
 
         // add conditions that should always apply here
 
@@ -60,18 +60,13 @@ class PostsSearch extends Posts
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_pages' => $pages,
-            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'cover_image', $this->cover_image])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'author', $this->author]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'slug', $this->slug]);
 
         return $dataProvider;
     }

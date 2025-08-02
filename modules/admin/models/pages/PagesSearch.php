@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use app\modules\admin\models\pages\Pages;
 
 /**
- * PagesSearch represents the model behind the search form of `app\modules\admin\models\pages\Pages`.
+ * PagesSearch represents the model behind the search form of `app\models\pages\Pages`.
  */
 class PagesSearch extends Pages
 {
@@ -18,7 +18,7 @@ class PagesSearch extends Pages
     {
         return [
             [['id'], 'integer'],
-            [['name', 'slug', 'description', 'layout', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
+            [['name', 'slug', 'layout', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
         ];
     }
 
@@ -66,8 +66,7 @@ class PagesSearch extends Pages
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'slug', $this->slug]);
 
         return $dataProvider;
     }

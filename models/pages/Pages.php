@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\admin\models\pages;
+namespace app\models\pages;
 
 use Yii;
 use yii\behaviors\SluggableBehavior;
