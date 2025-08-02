@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group mt-3">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success px-3']) ?>
-        <?= Html::a('Cancel', ['index'], ['class' => 'btn btn-light text-danger px-3']) ?>
+        <?= Html::a('Cancel', ['index', 'slug' => $_GET['pages']], ['class' => 'btn btn-light text-danger px-3']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

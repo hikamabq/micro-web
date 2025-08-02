@@ -48,9 +48,9 @@ class PostsController extends Controller
         ]);
     }
 
-    public function actionPage($slug)
+    public function actionPage($pages)
     {
-        $model = Pages::findOne(['slug' => $slug]);
+        $model = Pages::findOne(['slug' => $pages]);
         $searchModel = new PostsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -79,13 +79,13 @@ class PostsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($pages)
     {
         $model = new Posts();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index', 'slug' => $pages]);
             }
         } else {
             $model->loadDefaultValues();

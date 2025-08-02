@@ -13,12 +13,12 @@ use yii\widgets\Pjax;
 $this->title = ucfirst($model->name);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="posts-index p-3">
+<div class="posts-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?= Html::a('Create Posts', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Posts', ['create', 'pages' => $_GET['pages']], ['class' => 'btn btn-success px-3']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -27,15 +27,28 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         // 'filterModel' => $searchModel,
+        'layout' => '{items}{summary}{pager}',
+        'tableOptions' => [
+            'class' => 'table table-bordered'
+        ],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'headerOptions' => [
+                    'style' => 'width:40px; min-width:40px; max-width:40px;'
+                ],
+                'contentOptions' => [
+                    'class' => 'text-center'
+                ],
+                'header' => '',
+                'class' => 'yii\grid\SerialColumn'
+            ],
 
             // 'id',
             // 'id_pages',
             'title',
             // 'slug',
             'cover_image',
-            'content:ntext',
+            // 'content:ntext',
             //'author',
             'status',
             //'created_at',

@@ -29,9 +29,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <body class="">
 <?php $this->beginBody() ?>
 
-<div class="bg-white p-2">
+<div class="bg-white p-2 border-bottom">
     <?= Html::a('Back', ['index'], ['class' => 'btn btn-light px-3']) ?>
-    <?= Html::a('Save Change', ['index'], ['class' => 'btn btn-primary px-3']) ?>
+    <?= Html::button('Save & Publish', ['id' => 'save-btn', 'class' => 'btn btn-success px-3']) ?>
 </div>
 <?= $content ?>
 

@@ -3,6 +3,7 @@ use \yii\web\Request;
 date_default_timezone_set('Asia/Jakarta');
 ini_set('date.timezone', 'Asia/Jakarta');
 $baseUrl = str_replace('/web', '', (new Request)->getBaseUrl());
+require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'micro-app',
@@ -42,12 +43,18 @@ $config = [
                 ],
             ],
         ],
-        'db' => require __DIR__ . '/db.php',
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=127.0.0.1;dbname='.$db['database'].'',
+            'username' => $db['username'],
+            'password' => $db['password'],
+            'charset' => 'utf8',
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'admin/page/<slug>' => 'admin/posts/page',
+                // 'admin/page/<slug>' => 'admin/posts/page',
             ],
         ],
     ],

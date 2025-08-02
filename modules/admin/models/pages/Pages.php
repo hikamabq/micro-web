@@ -12,7 +12,6 @@ use yii\behaviors\SluggableBehavior;
  * @property string $name
  * @property string|null $slug
  * @property string|null $description
- * @property string|null $layout
  * @property string $created_at
  * @property string|null $updated_at
  * @property string|null $deleted_at
@@ -47,9 +46,9 @@ class Pages extends \yii\db\ActiveRecord
     {
         return [
             [['slug', 'description', 'updated_at', 'deleted_at'], 'default', 'value' => null],
-            [['name', 'layout'], 'required'],
+            [['name'], 'required'],
             [['created_at', 'updated_at', 'deleted_at'], 'safe'],
-            [['name', 'slug', 'description', 'layout'], 'string', 'max' => 255],
+            [['name', 'slug', 'description'], 'string', 'max' => 255],
         ];
     }
 

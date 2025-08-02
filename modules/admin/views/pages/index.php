@@ -13,11 +13,12 @@ use yii\widgets\Pjax;
 $this->title = 'Pages';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pages-index p-3">
+<div class="pages-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
+        <?= Html::a('Builder', ['page-builder'], ['class' => 'btn btn-success px-3']) ?>
         <?= Html::a('Create Pages', ['create'], ['class' => 'btn btn-success px-3']) ?>
     </p>
 

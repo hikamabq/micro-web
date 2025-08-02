@@ -34,10 +34,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <div class="p-3 mb-3 border-bottom border-secondary border-opacity-50">
             <div class="d-flex align-items-center justify-content-start">
                 <div class="me-3">
-                    <img src="<?= Url::to('@web/logo.svg') ?>" width="25px" alt="">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="none"  stroke="#14b8a6"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-databricks"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l9 5l9 -5v-3l-9 5l-9 -5v-3l9 5l9 -5v-3l-9 5l-9 -5l9 -5l5.418 3.01" /></svg>
                 </div>
                 <div>
-                    <span class="text-light d-block fw-bold">YiiCome</span>
+                    <span class="text-light d-block fw-bold">Hicome</span>
                     <span class="text-light text-opacity-50 small d-block rounded-1">Yii CMS from hicome</span>
                 </div>
             </div>
@@ -49,7 +49,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-layout-grid"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /></svg>
                     <span class="ps-2">Dashboard</span>
                 </a>
-                <div class="mb-1 mt-3 px-2 very-small text-secondary text-uppercase">Pages</div>
                 <?= Menu::pages(); ?>
                 <div class="mb-1 mt-3 px-2 very-small text-secondary text-uppercase">Management</div>
                 <?= Menu::management(); ?>
@@ -77,7 +76,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                  ?>
             </div>
         </header>
-        <main class="">
+        <main class="p-4">
             <?= Alert::widget() ?>
             <?= $content ?>
         </main>

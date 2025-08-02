@@ -9,7 +9,7 @@ class DefaultController extends Controller
 {
     public function actionIndex()
     {
-        $posts = Yii::$app->db->createCommand('SELECT * FROM test')->queryAll();
+        $posts = Yii::$app->db->createCommand('SELECT * FROM users')->queryAll();
         return $this->render('index', [
             'posts' => $posts
         ]);

@@ -77,8 +77,27 @@ class PagesController extends Controller
             $model->loadDefaultValues();
         }
 
-        $this->layout = 'pagebuilder';
         return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+    public function actionPageBuilder()
+    {
+        $model = new Pages();
+        $model->name = 'static';
+        $model->slug = 'static';
+        $model->layout = 'static';
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        $this->layout = 'pagebuilder';
+        return $this->render('page_builder', [
             'model' => $model,
         ]);
     }
