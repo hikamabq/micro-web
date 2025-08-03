@@ -29,7 +29,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => false,
-            'authTimeout' => 300,
+            'authTimeout' => 3000,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -62,6 +62,9 @@ $config = [
                 'admin' => 'admin/default',
             ],
         ],
+    ],
+    'params' => [
+        'bsVersion' => '5.x',
     ],
     'modules' => [
         'admin' => [

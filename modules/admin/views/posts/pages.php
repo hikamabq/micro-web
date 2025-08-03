@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 /** @var app\modules\admin\models\posts\PostsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Posts';
+$this->title = ucfirst($model->name);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="posts-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?= Html::a('Create Posts', ['create'], ['class' => 'btn btn-success px-3']) ?>
+        <?= Html::a('Create Posts', ['create', 'pages' => $_GET['pages']], ['class' => 'btn btn-success px-3']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -47,11 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'id_pages',
             'title',
             // 'slug',
-            // 'cover_image',
-            [
-                'attribute' => 'page',
-                'value' => 'page.name'
-            ],
+            'cover_image',
             // 'content:ntext',
             //'author',
             // 'status',

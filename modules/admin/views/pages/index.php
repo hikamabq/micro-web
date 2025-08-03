@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?= Html::a('Builder', ['page-builder'], ['class' => 'btn btn-success px-3']) ?>
+        <?php //echo Html::a('Builder', ['page-builder'], ['class' => 'btn btn-outline-dark px-3']) ?>
         <?= Html::a('Create Pages', ['create'], ['class' => 'btn btn-success px-3']) ?>
     </p>
 
@@ -44,13 +44,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\SerialColumn'
             ],
             'name',
+            'description',
             [
                 'attribute' => 'slug',
                 'value' => function($model){
                     return '/'.$model->slug;
                 }
             ],
-            'description',
+            'layout',
             // 'created_at',
             //'updated_at',
             //'deleted_at',

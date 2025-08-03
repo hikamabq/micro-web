@@ -61,9 +61,9 @@ class Pages extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'slug' => 'Link',
+            'slug' => 'Url',
             'description' => 'Description',
-            'layout' => 'layout',
+            'layout' => 'Layout',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',

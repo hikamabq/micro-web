@@ -5,9 +5,11 @@ namespace app\modules\admin\controllers;
 use app\modules\admin\models\pages\Pages;
 use app\modules\admin\models\posts\Posts;
 use app\modules\admin\models\posts\PostsSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * PostsController implements the CRUD actions for Posts model.
@@ -52,9 +54,9 @@ class PostsController extends Controller
     {
         $model = Pages::findOne(['slug' => $pages]);
         $searchModel = new PostsSearch();
-        $dataProvider = $searchModel->search($model->id, $this->request->queryParams);
+        $dataProvider = $searchModel->searchPage($model->id, $this->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('pages', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
@@ -79,13 +81,22 @@ class PostsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate($pages)
+    public function actionCreate()
     {
         $model = new Posts();
+        $model->status = 1;
+        $model->author = Yii::$app->user->identity->username;
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['index', 'slug' => $pages]);
+            if ($model->load($this->request->post()) ) {
+                $upload = UploadedFile::getInstance($model, 'cover_image');
+                $name_file = rand();
+                if (!empty($upload)) {
+                    $upload->saveAs('uploads/' . $name_file . '.' . $upload->extension);
+                    $model->cover_image = $name_file . '.' . $upload->extension;
+                }
+                $model->save();
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -106,9 +117,20 @@ class PostsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $gambar_lama = $model->cover_image;
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post()) ) {
+            if ($model->cover_image == null) {
+                $model->cover_image = $gambar_lama;
+            }
+            $upload = UploadedFile::getInstance($model, 'cover_image');
+            $name_file = rand();
+            if (!empty($upload)) {
+                $upload->saveAs('uploads/' . $name_file . '.' . $upload->extension);
+                $model->cover_image = $name_file . '.' . $upload->extension;
+            }
+            $model->save();
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

@@ -12,7 +12,9 @@
     "require": {
         "yiisoft/yii2": "~2.0.52",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
-        "2amigos/yii2-chartjs-widget" : "~2.0"
+        "2amigos/yii2-chartjs-widget" : "~2.0",
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "kartik-v/yii2-editors": "dev-master"
     },
     "repositories": [
         {

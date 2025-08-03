@@ -70,7 +70,9 @@ class PagesController extends Controller
         $model = new Pages();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post()) ) {
+                $model->name = ucfirst($model->name);
+                $model->save();
                 return $this->redirect(['index']);
             }
         } else {

@@ -2,7 +2,9 @@
 
 namespace app\modules\admin\models\posts;
 
+use app\modules\admin\models\pages\Pages;
 use Yii;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "posts".
@@ -22,7 +24,17 @@ use Yii;
 class Posts extends \yii\db\ActiveRecord
 {
 
-
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'title',
+                'ensureUnique' => true,
+                // 'slugAttribute' => 'slug',
+            ],
+        ];
+    }
     /**
      * {@inheritdoc}
      */
@@ -38,7 +50,7 @@ class Posts extends \yii\db\ActiveRecord
     {
         return [
             [['cover_image', 'content', 'updated_at', 'deleted_at'], 'default', 'value' => null],
-            [['id_pages', 'title', 'slug', 'author', 'status'], 'required'],
+            [['id_pages', 'title', 'slug'], 'required'],
             [['id_pages', 'status'], 'integer'],
             [['content'], 'string'],
             [['created_at', 'updated_at', 'deleted_at'], 'safe'],
@@ -53,7 +65,7 @@ class Posts extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_pages' => 'Id Pages',
+            'id_pages' => 'Page',
             'title' => 'Title',
             'slug' => 'Slug',
             'cover_image' => 'Cover Image',
@@ -64,6 +76,10 @@ class Posts extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',
         ];
+    }
+    public function getPage()
+    {
+        return $this->hasOne(Pages::className(), ['id' => 'id_pages']);
     }
 
 }

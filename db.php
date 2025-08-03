@@ -1,6 +1,6 @@
 <?php
 $db = [
-    'database' => 'antayamaulana',
+    'database' => 'micro',
     'username' => 'root',
     'password' => ''
 ];

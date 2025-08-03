@@ -39,7 +39,43 @@ class PostsSearch extends Posts
      *
      * @return ActiveDataProvider
      */
-    public function search($pages, $params, $formName = null)
+    public function search($params, $formName = null)
+    {
+        $query = Posts::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params, $formName);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'id_pages' => $this->id_pages,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at,
+        ]);
+
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'slug', $this->slug])
+            ->andFilterWhere(['like', 'cover_image', $this->cover_image])
+            ->andFilterWhere(['like', 'content', $this->content])
+            ->andFilterWhere(['like', 'author', $this->author]);
+
+        return $dataProvider;
+    }
+    public function searchPage($pages, $params, $formName = null)
     {
         $query = Posts::find();
 
