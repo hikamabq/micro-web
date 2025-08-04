@@ -59,11 +59,11 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'admin/page/<pages>' => 'admin/posts/page',
+                'admin' => 'admin',
                 'home' => 'site/index',
                 'login' => 'site/login',
                 '<slug>' => 'site/pages',
                 'read/<slug>' => 'site/read',
-                'admin' => 'admin/default',
             ],
         ],
     ],
