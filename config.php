@@ -31,6 +31,10 @@ $config = [
             'enableAutoLogin' => false,
             'authTimeout' => 3000,
         ],
+        'session' => [
+            'class' => 'yii\web\Session',
+            'savePath' => '@runtime/sessions',
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

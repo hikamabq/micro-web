@@ -46,11 +46,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="<?= Url::to('/home') ?>">Home</a>
+                        <a class="nav-link" aria-current="page" href="<?= Url::to(['index']) ?>">Home</a>
                     </li>
                     <?php foreach($pages as $data){ ?>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="<?= Url::to('/'.$data['slug']) ?>"><?= $data['name'] ?></a>
+                        <a class="nav-link" aria-current="page" href="<?= Url::to(['pages', 'slug' => $data['slug']]) ?>"><?= $data['name'] ?></a>
                     </li>
                     <?php } ?>
                 </ul>
