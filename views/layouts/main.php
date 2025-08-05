@@ -9,7 +9,7 @@ use app\widgets\Alert;
 use yii\helpers\Url;
 
 AppAsset::register($this);
-$pages = Pages::find()->all();
+$pages = Pages::find()->select(['name','slug'])->all();
 
 $this->registerCsrfMetaTags();
 $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');

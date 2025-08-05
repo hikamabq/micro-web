@@ -45,7 +45,7 @@ class SiteController extends Controller
         if(empty($pages) ){
             return $this->redirect(['index']);
         }
-        $model = Posts::find()->where(['id_pages' => $pages->id])->orderBy(['id' => SORT_DESC])->all();
+        $model = Posts::find()->joinWith(['page'])->where(['id_pages' => $pages->id])->orderBy(['id' => SORT_DESC])->all();
         return $this->render(''.$pages->layout.'', [
             'pages' => $pages,
             'model' => $model,
@@ -53,11 +53,11 @@ class SiteController extends Controller
     }
     public function actionRead($slug)
     {
-        $model = Posts::find()->where(['slug' => $slug])->one();
+        $model = Posts::find()->joinWith(['page'])->where(['posts.slug' => $slug])->one();
         if(empty($model)){
             return $this->redirect(['index']);
         }
-        $other = Posts::find()->where(['not', ['slug' => $slug]])->andWhere(['id_pages' => $model->id_pages])->limit(10)->all();
+        $other = Posts::find()->joinWith(['page'])->where(['not', ['posts.slug' => $slug]])->andWhere(['id_pages' => $model->id_pages])->limit(10)->all();
         return $this->render('detail', [
             'model' => $model,
             'other' => $other,
@@ -71,6 +71,7 @@ class SiteController extends Controller
         }
 
         $model->password = '';
+        $this->layout = 'auth';
         return $this->render('login', [
             'model' => $model,
         ]);

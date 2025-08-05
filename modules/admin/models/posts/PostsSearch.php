@@ -41,7 +41,7 @@ class PostsSearch extends Posts
      */
     public function search($params, $formName = null)
     {
-        $query = Posts::find();
+        $query = Posts::find()->joinWith(['page']);
 
         // add conditions that should always apply here
 

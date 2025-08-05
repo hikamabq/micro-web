@@ -12,8 +12,8 @@ use yii\helpers\Url;
                 <div class="card border-0 h-100 posts">
                     <div class="card-body border-0 p-0 h-100">
                         <a href="<?= Url::to(['read', 'slug' => $data['slug']]) ?>">
-                            <div class="cover_image rounded">
-                                <img src="<?= Url::to('@web/uploads/'.$data['cover_image'].'') ?>" alt="" class="img-fluid rounded">
+                            <div class="cover_image">
+                                <img src="<?= Url::to('@web/uploads/'.$data['cover_image'].'') ?>" alt="" class="img-fluid">
                             </div>
                         </a>
                     </div>
