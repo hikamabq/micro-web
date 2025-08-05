@@ -38,7 +38,14 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="container">
             <a class="navbar-brand" href="#"> 
-                <img src="<?= Url::to('@web/logo.svg') ?>" width="25px" alt=""> Hicome CMS
+                <div class="d-flex align-items-center justify-content-start">
+                    <div class="me-3">
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="none"  stroke="#4f46e5"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-databricks"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l9 5l9 -5v-3l-9 5l-9 -5v-3l9 5l9 -5v-3l-9 5l-9 -5l9 -5l5.418 3.01" /></svg>
+                    </div>
+                    <div>
+                        <span class="text-dark d-block brand-logo">halamia CMS</span>
+                    </div>
+                </div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

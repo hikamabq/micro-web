@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\modules\admin\models\users\Users;
 use app\modules\admin\models\users\UsersSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -70,8 +71,10 @@ class UsersController extends Controller
         $model = new Users();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post()) ) {
+                $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
+                $model->save();
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -92,9 +95,12 @@ class UsersController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->password = '';
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post()) ) {
+            $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
+            $model->save();
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

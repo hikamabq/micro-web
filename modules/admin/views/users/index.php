@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?= Html::a('Create Users', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Users', ['create'], ['class' => 'btn btn-success px-3']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -43,14 +43,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\SerialColumn'
             ],
             'username',
-            'password:ntext',
-            'password_reset_token:ntext',
-            'auth_key',
+            // 'password:ntext',
+            // 'password_reset_token:ntext',
+            // 'auth_key',
             //'access_token',
             //'role',
             //'deleted_at',
             [
+                'headerOptions' => [
+                    'style' => 'width:100px; min-width:100px; max-width:100px;'
+                ],
                 'class' => ActionColumn::className(),
+                'template' => '{update} {delete}',
                 'urlCreator' => function ($action, Users $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

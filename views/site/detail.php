@@ -19,8 +19,8 @@ use yii\helpers\Url;
                 <?php foreach($other as $data){ ?>
                     <div class="mb-3">
                         <a href="<?= Url::to(['read', 'slug' => $data['slug']]) ?>" class="text-decoration-none text-dark">
-                            <span class="fw-semibold small d-block"><?= substr($data['title'], 0, 80) ?></span>
-                            <span class="very-small text-danger"><?= $data['page']['name'] ?></span>
+                            <span class="fw-semibold small d-block"><?= $data['title'] ?></span>
+                            <span class="very-small text-secondary"><?= $data['page']['name'] ?></span>
                         </a>
                     </div>
                 <?php } ?>

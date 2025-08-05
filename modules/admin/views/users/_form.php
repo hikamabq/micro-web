@@ -14,20 +14,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'password')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'password')->passwordInput() ?>
 
-    <?= $form->field($model, 'password_reset_token')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'access_token')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'role')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'deleted_at')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+    <div class="form-group mt-3">
+        <?= Html::a('Back', ['index'], ['class' => 'btn px-3 btn-light']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn px-3 btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
