@@ -47,6 +47,7 @@
             "chmod -R 777 web/assets"
         ],
         "post-update-cmd": [
+            "mkdir -p runtime/sessions",
             "chmod -R 777 runtime",
             "chmod -R 777 web/assets"
         ]
