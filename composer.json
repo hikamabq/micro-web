@@ -40,17 +40,15 @@
         }
     },
     "scripts": {
-        "serve": "vendor/bin/yii serve --docroot=./web"
-    },
-    "extra": {
-        "yii\\composer\\Installer::postCreateProject": {
-            "setPermission": [
-                {
-                    "runtime": "0777",
-                    "web/assets": "0777",
-                    "yii": "0755"
-                }
-            ]
-        }
+        "serve": "vendor/bin/yii serve --docroot=./web",
+        "post-install-cmd": [
+            "mkdir -p runtime/sessions",
+            "chmod -R 777 runtime",
+            "chmod -R 777 web/assets"
+        ],
+        "post-update-cmd": [
+            "chmod -R 777 runtime",
+            "chmod -R 777 web/assets"
+        ]
     }
 }
