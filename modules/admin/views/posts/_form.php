@@ -36,6 +36,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'cover_image')->widget(FileInput::classname(), [
                 'options' => ['accept' => 'image/*'],
                 'pluginOptions' => [
+                    'browseClass' => 'btn btn-success',
                     'initialPreview'=>[
                         Url::to(['@web/uploads/'.$model->cover_image.''])
                     ],
@@ -49,6 +50,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'cover_image')->widget(FileInput::classname(), [
                 'options' => ['accept' => 'image/*'],
                 'pluginOptions' => [
+                    'browseClass' => 'btn btn-success',
                     'showRemove' => false,
                     'showCancel' => false,
                     'showUpload' => false
