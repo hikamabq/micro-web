@@ -13,10 +13,11 @@ use yii\widgets\ActiveForm;
     
     <?php 
     $options = [
-        'blog_post1' => 'Blog Post 1<br><img src="' . Yii::getAlias('@web/ui/blog_post1.png') . '" style="max-width:200px" class="border rounded">',
-        'blog_post2' => 'Blog Post 2<br><img src="' . Yii::getAlias('@web/ui/blog_post2.png') . '" style="max-width:200px" class="border rounded">',
-        'blog_post3' => 'Blog Post 3<br><img src="' . Yii::getAlias('@web/ui/blog_post3.png') . '" style="max-width:200px" class="border rounded">',
-        'single_post' => 'Single Post<br><img src="' . Yii::getAlias('@web/ui/single_post.png') . '" style="max-width:200px" class="border rounded">',
+        'blog_post1' => 'Blog Post 1<br><img src="' . Yii::getAlias('@web/ui/blog_post1.svg') . '" style="max-width:170px" class="border rounded">',
+        'blog_post2' => 'Blog Post 2<br><img src="' . Yii::getAlias('@web/ui/blog_post2.svg') . '" style="max-width:170px" class="border rounded">',
+        'blog_post3' => 'Blog Post 3<br><img src="' . Yii::getAlias('@web/ui/blog_post3.svg') . '" style="max-width:170px" class="border rounded">',
+        'single_post' => 'Single Post<br><img src="' . Yii::getAlias('@web/ui/single_post.svg') . '" style="max-width:170px" class="border rounded">',
+        'custom' => 'Custom<br><img src="' . Yii::getAlias('@web/ui/custom.svg') . '" style="max-width:170px" class="border rounded">',
     ];
     ?>
     <?= $form->field($model, 'layout')->radioList($options, ['encode' => false]); ?> 

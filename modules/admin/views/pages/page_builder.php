@@ -7,11 +7,12 @@ use app\assets\GrapesJsAsset;
 /* @var $this yii\web\View */
 /* @var $model app\models\Page */
 
-$this->title = $model->isNewRecord ? 'Buat Halaman Baru' : 'Edit Halaman: ' . $model->title;
+$this->title = $model->isNewRecord ? 'Buat Halaman Baru' : 'Edit Halaman: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Halaman', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $model->isNewRecord ? 'Buat Baru' : 'Edit';
 
 GrapesJsAsset::register($this);
+Html::csrfMetaTags();
 
 // CSS tambahan
 $this->registerCss(<<<CSS
@@ -509,8 +510,33 @@ pn.addButton('options', {
 });
 
 $('#save-btn').on('click', function() {
-    data = '<style>'+ editor.getCss() +'</style>' + editor.getHtml();
-    alert(data);
+    // data = page_name + '<style>'+ editor.getCss() +'</style>' + editor.getHtml();
+    var data = {
+        css: editor.getCss(),
+        html: editor.getHtml()
+    };
+    var url = '/admin/pages/save?id=$model->id';
+    // Ambil token dari meta tag
+    const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+    $.ajax({
+        url: url, // ganti sesuai route
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        headers: {
+            'X-CSRF-Token': csrfToken // <--- kirim di header
+        },
+        success: function(response) {
+            console.log(response);
+            alert('Saved');
+        },
+        error: function(xhr) {
+            console.error(xhr.responseText);
+        }
+    });
+    // alert(JSON.stringify(data));
 });
 
 // // Add and beautify tooltips

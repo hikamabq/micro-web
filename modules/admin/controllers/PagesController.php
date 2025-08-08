@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\modules\admin\models\pages\Pages;
 use app\modules\admin\models\pages\PagesSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -83,13 +84,11 @@ class PagesController extends Controller
             'model' => $model,
         ]);
     }
-    public function actionPageBuilder()
+    public function actionPageBuilder($id)
     {
-        $model = new Pages();
-        $model->name = 'static';
-        $model->slug = 'static';
-        $model->layout = 'static';
+        $model = $this->findModel($id);
 
+        
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['index']);
@@ -103,6 +102,27 @@ class PagesController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionSave($id)
+    {
+        $model = $this->findModel($id);
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $data = json_decode(Yii::$app->request->getRawBody(), true);
+
+        $model->html_content  = $data['html'] ?? '';
+        $model->css_content = $data['css'] ?? '';
+        $model->save();
+
+        // Simpan ke database (contoh skip)
+        // return $this->redirect(['index']);
+
+        return [
+            'status'  => 'success',
+            'message' => 'Data berhasil disimpan',
+            'data'    => $model
+        ];
+    }
+
 
     /**
      * Updates an existing Pages model.

@@ -18,8 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?php //echo Html::a('Builder', ['page-builder'], ['class' => 'btn btn-outline-dark px-3']) ?>
-        <?= Html::a('Create Pages', ['create'], ['class' => 'btn btn-success px-3']) ?>
+        <?= Html::a('Create Page', ['create'], ['class' => 'btn btn-success px-3']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -47,8 +46,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'description',
             [
                 'attribute' => 'slug',
+                'format' => 'raw',
                 'value' => function($model){
-                    return '/'.$model->slug;
+                    $host = $_SERVER['HTTP_HOST'];
+                    return '<span>'.$host.'/'.$model->slug.'</span>';
                 }
             ],
             'layout',
@@ -56,8 +57,18 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             //'deleted_at',
             [
+                'headerOptions' => [
+                    'style' => 'width:150px; min-width:150px; max-width:150px;'
+                ],
                 'class' => ActionColumn::className(),
-                'template' => '{update} {delete}',
+                'template' => '{update} {delete} {page-builder} ',
+                'buttons' => [
+                    'page-builder' => function ($url,$model,$key) {
+                        if($model->layout == 'custom'){
+                            return Html::a('Customize', ['page-builder', 'id' => $model->id], ['class' => 'px-1 bg-white bg-opacity-10 text-secondary border rounded-1']);
+                        }
+                    },
+                ],
                 'urlCreator' => function ($action, Pages $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

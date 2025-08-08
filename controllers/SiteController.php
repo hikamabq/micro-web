@@ -42,10 +42,14 @@ class SiteController extends Controller
     public function actionPages($slug)
     {
         $pages = Pages::findOne(['slug' => $slug]);
-        if(empty($pages) ){
-            return $this->redirect(['index']);
+        if($pages->layout != 'custom'){
+            if(empty($pages) ){
+                return $this->redirect(['index']);
+            }
+            $model = Posts::find()->joinWith(['page'])->where(['id_pages' => $pages->id])->orderBy(['id' => SORT_DESC])->all();
+        }else{
+            $model = $pages;
         }
-        $model = Posts::find()->joinWith(['page'])->where(['id_pages' => $pages->id])->orderBy(['id' => SORT_DESC])->all();
         return $this->render(''.$pages->layout.'', [
             'pages' => $pages,
             'model' => $model,
