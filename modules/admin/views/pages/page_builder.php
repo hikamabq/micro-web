@@ -540,27 +540,27 @@ $('#save-btn').on('click', function() {
 });
 
 // // Add and beautify tooltips
-// [['sw-visibility', 'Show Borders'], ['preview', 'Preview'], ['fullscreen', 'Fullscreen'],
-//  ['export-template', 'Export'], ['undo', 'Undo'], ['redo', 'Redo'],
-//  ['gjs-open-import-webpage', 'Import'], ['canvas-clear', 'Clear canvas']]
-// .forEach(function(item) {
-//     pn.getButton('options', item[0]).set('attributes', {title: item[1], 'data-tooltip-pos': 'bottom'});
-// });
-// [['open-sm', 'Style Manager'], ['open-layers', 'Layers'], ['open-blocks', 'Blocks']]
-// .forEach(function(item) {
-//     pn.getButton('views', item[0]).set('attributes', {title: item[1], 'data-tooltip-pos': 'bottom'});
-// });
-// var titles = document.querySelectorAll('*[title]');
+[['sw-visibility', 'Show Borders'], ['preview', 'Preview'], ['fullscreen', 'Fullscreen'],
+ ['export-template', 'Export'], ['undo', 'Undo'], ['redo', 'Redo'],
+ ['gjs-open-import-webpage', 'Import'], ['canvas-clear', 'Clear canvas']]
+.forEach(function(item) {
+    pn.getButton('options', item[0]).set('attributes', {title: item[1], 'data-tooltip-pos': 'bottom'});
+});
+[['open-sm', 'Style Manager'], ['open-layers', 'Layers'], ['open-blocks', 'Blocks']]
+.forEach(function(item) {
+    pn.getButton('views', item[0]).set('attributes', {title: item[1], 'data-tooltip-pos': 'bottom'});
+});
+var titles = document.querySelectorAll('*[title]');
 
-// for (var i = 0; i < titles.length; i++) {
-//     var el = titles[i];
-//     var title = el.getAttribute('title');
-//     title = title ? title.trim(): '';
-//     if(!title)
-//         break;
-//     el.setAttribute('data-tooltip', title);
-//     el.setAttribute('title', '');
-// }
+for (var i = 0; i < titles.length; i++) {
+    var el = titles[i];
+    var title = el.getAttribute('title');
+    title = title ? title.trim(): '';
+    if(!title)
+        break;
+    el.setAttribute('data-tooltip', title);
+    el.setAttribute('title', '');
+}
 
 // // Do stuff on load
 // editor.on('load', function() {
@@ -607,69 +607,6 @@ $('#save-btn').on('click', function() {
 //     // Open block manager
 //     var openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
 //     openBlocksBtn && openBlocksBtn.set('active', 1);
-// });
-
-// // Handle save button
-// $('#save-btn').on('click', function() {
-//     var btn = $(this);
-//     var status = $('#save-status');
-    
-//     btn.prop('disabled', true);
-//     status.html('<i class="fa fa-spinner fa-spin"></i> Menyimpan...');
-    
-//     var formData = $('#page-info-form').serializeArray();
-//     formData.push({
-//         name: 'html',
-//         value: editor.getHtml()
-//     });
-//     formData.push({
-//         name: 'css',
-//         value: editor.getCss()
-//     });
-    
-//     $.ajax({
-//         url: '/page-editor/save',
-//         type: 'POST',
-//         data: formData,
-//         success: function(response) {
-//             if (response.success) {
-//                 status.html('<i class="fa fa-check text-success"></i> Berhasil disimpan');
-                
-//                 // Update URL jika halaman baru
-//                 if (window.location.pathname.indexOf('/create') > -1 && response.id) {
-//                     var newUrl = window.location.pathname.replace('/create', '/update?id=' + response.id);
-//                     window.history.pushState(null, '', newUrl);
-//                 }
-//             } else {
-//                 var errors = '';
-//                 if (response.errors) {
-//                     for (var field in response.errors) {
-//                         errors += response.errors[field].join(', ') + ' ';
-//                     }
-//                 }
-//                 status.html('<i class="fa fa-times text-danger"></i> ' + (errors || response.message));
-//             }
-//         },
-//         error: function() {
-//             status.html('<i class="fa fa-times text-danger"></i> Gagal menyimpan');
-//         },
-//         complete: function() {
-//             btn.prop('disabled', false);
-//             setTimeout(function() {
-//                 status.html('');
-//             }, 3000);
-//         }
-//     });
-// });
-
-// // Generate slug dari judul
-// $('#page-title').on('blur', function() {
-//     if ($('#page-slug').val() === '' || $('#page-slug').val() === $('#page-title').val().toLowerCase().replace(/[^a-z0-9]+/g, '-')) {
-//         var slug = $('#page-title').val().toLowerCase()
-//             .replace(/[^\w ]+/g, '')
-//             .replace(/ +/g, '-');
-//         $('#page-slug').val(slug);
-//     }
 // });
 JS;
 
