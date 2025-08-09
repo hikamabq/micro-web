@@ -3,19 +3,16 @@
 namespace app\modules\admin\controllers;
 
 use app\modules\admin\models\media\Media;
-use app\modules\admin\models\pages\Pages;
-use app\modules\admin\models\pages\PagesSearch;
-use Yii;
-use yii\db\Expression;
+use app\modules\admin\models\media\MediaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\helpers\Json;
+use yii\web\UploadedFile;
 
 /**
- * PagesController implements the CRUD actions for Pages model.
+ * MediaController implements the CRUD actions for Media model.
  */
-class PagesController extends Controller
+class MediaController extends Controller
 {
     /**
      * @inheritDoc
@@ -36,23 +33,44 @@ class PagesController extends Controller
     }
 
     /**
-     * Lists all Pages models.
+     * Lists all Media models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new PagesSearch();
+        $model = new Media();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) ) {
+                $upload = UploadedFile::getInstances($model, 'name');
+
+                if (!empty($upload)) {
+                    foreach($upload as $data){
+                        $name_file = rand();
+                        $data->saveAs('uploads/' . $name_file . '.' . $data->extension);
+                        $model = new Media();
+                        $model->name = $name_file . '.' . $data->extension;
+                        $model->save();
+                    }
+                }
+                return $this->redirect(['index']);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+        $searchModel = new MediaSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 
     /**
-     * Displays a single Pages model.
+     * Displays a single Media model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -65,19 +83,17 @@ class PagesController extends Controller
     }
 
     /**
-     * Creates a new Pages model.
+     * Creates a new Media model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Pages();
+        $model = new Media();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) ) {
-                $model->name = ucfirst($model->name);
-                $model->save();
-                return $this->redirect(['index']);
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -87,57 +103,9 @@ class PagesController extends Controller
             'model' => $model,
         ]);
     }
-    public function actionPageBuilder($id)
-    {
-        $model = $this->findModel($id);
-        $media = Media::find()->select([new Expression("CONCAT('/uploads/', '', name) AS name")])->all();
-
-        $result = [];
-        foreach ($media as $data) {
-            $result[] = $data['name']; 
-        }
-        $result = json_encode($result);
-
-        
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['index']);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
-
-        $this->layout = 'pagebuilder';
-        return $this->render('page_builder', [
-            'model' => $model,
-            'result' => $result,
-        ]);
-    }
-    public function actionSave($id)
-    {
-        $model = $this->findModel($id);
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-        $data = json_decode(Yii::$app->request->getRawBody(), true);
-
-        $model->html_content  = $data['html'] ?? '';
-        $model->css_content = $data['css'] ?? '';
-        $model->save();
-
-        // Simpan ke database (contoh skip)
-        // return $this->redirect(['index']);
-        // Yii::$app->session->setFlash('success', 'Data berhasil disimpan!');
-
-        return [
-            'status'  => 'success',
-            'message' => 'Data berhasil disimpan',
-            'data'    => $model
-        ];
-    }
-
 
     /**
-     * Updates an existing Pages model.
+     * Updates an existing Media model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -148,7 +116,7 @@ class PagesController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -157,7 +125,7 @@ class PagesController extends Controller
     }
 
     /**
-     * Deletes an existing Pages model.
+     * Deletes an existing Media model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -171,15 +139,15 @@ class PagesController extends Controller
     }
 
     /**
-     * Finds the Pages model based on its primary key value.
+     * Finds the Media model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Pages the loaded model
+     * @return Media the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Pages::findOne(['id' => $id])) !== null) {
+        if (($model = Media::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

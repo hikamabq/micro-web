@@ -116,26 +116,13 @@ CSS
         </div> -->
     </div>
 
-    <div id="gjs" style="height:0px; overflow:scroll;"></div>
+    <!-- <div id="gjs" style="height:0px; overflow:scroll;"></div> -->
+    <div id="gjs" style="height: 100vh; overflow: auto;"></div>
 
 </div>
 
 <?php
-$images = json_encode([
-    '/pagebuilder/img/team1.jpg',
-    '/pagebuilder/img/team2.jpg',
-    '/pagebuilder/img/team3.jpg',
-    'https://via.placeholder.com/350x250/78c5d6/fff',
-    'https://via.placeholder.com/350x250/459ba8/fff',
-    'https://via.placeholder.com/350x250/79c267/fff',
-    'https://via.placeholder.com/350x250/c5d647/fff',
-    'https://via.placeholder.com/350x250/f28c33/fff',
-    'https://via.placeholder.com/350x250/e868a2/fff',
-    'https://via.placeholder.com/350x250/cc4360/fff',
-    '/pagebuilder/img/work-desk.jpg',
-    '/pagebuilder/img/phone-app.png',
-    '/pagebuilder/img/bg-gr-v.png'
-]);
+$images = $result;
 
 $initialData = $model->isNewRecord ? '{}' : json_encode([
     'html' => $model->html_content,
@@ -147,7 +134,8 @@ $js = <<<JS
 var editor = grapesjs.init({
     height: '100vh',
     container: '#gjs',
-    fromElement: true,
+    // fromElement: true,
+    fromElement: false,
     showOffsets: true,
     storageManager: false,
     assetManager: {
@@ -451,6 +439,50 @@ var editor = grapesjs.init({
     },
 });
 
+editor.BlockManager.add('container', {
+    label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="48"  height="48"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-container"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 4v.01" /><path d="M20 20v.01" /><path d="M20 16v.01" /><path d="M20 12v.01" /><path d="M20 8v.01" /><path d="M8 4m0 1a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1z" /><path d="M4 4v.01" /><path d="M4 20v.01" /><path d="M4 16v.01" /><path d="M4 12v.01" /><path d="M4 8v.01" /></svg> Container',
+    content: `
+        <div class="container">
+        <div style="flex:1; min-height: 100px; border:1px dotted #aaa; padding:0px;" data-gjs-droppable="true" data-gjs-highlightable="true" draggable="true" data-gjs-name="Column"></div>
+      </div>`,
+    category: 'Custom',
+});
+editor.BlockManager.add('container-fluid', {
+    label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="48"  height="48"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brackets-contain"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4h-4v16h4" /><path d="M17 4h4v16h-4" /><path d="M8 16h.01" /><path d="M12 16h.01" /><path d="M16 16h.01" /></svg> Container Fluid',
+    content: `
+        <div class="container-fluid">
+        <div style="flex:1; min-height: 100px; border:1px dotted #aaa; padding:0px;" data-gjs-droppable="true" data-gjs-highlightable="true" draggable="true" data-gjs-name="Column"></div>
+      </div>`,
+    category: 'Custom',
+});
+editor.BlockManager.add('carousel', {
+    label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="48"  height="48"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-slideshow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l.01 0" /><path d="M3 3m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /><path d="M3 13l4 -4a3 5 0 0 1 3 0l4 4" /><path d="M13 12l2 -2a3 5 0 0 1 3 0l3 3" /><path d="M8 21l.01 0" /><path d="M12 21l.01 0" /><path d="M16 21l.01 0" /></svg> Carousel',
+    content: `
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden"><</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">></span>
+  </button>
+</div>`,
+    category: 'Custom',
+});
+
+
 // Load data awal jika edit
 var initialData = $initialData;
 if (initialData.html) {
@@ -529,11 +561,11 @@ $('#save-btn').on('click', function() {
             'X-CSRF-Token': csrfToken // <--- kirim di header
         },
         success: function(response) {
-            console.log(response);
+            // console.log(response);
             alert('Saved');
         },
         error: function(xhr) {
-            console.error(xhr.responseText);
+            // console.error(xhr.responseText);
         }
     });
     // alert(JSON.stringify(data));
