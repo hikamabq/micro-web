@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?= Html::a('Create Posts', ['create'], ['class' => 'btn btn-success px-3']) ?>
+        <?= Html::a('Create Posts', ['create'], ['class' => 'btn btn-success px-4']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -52,7 +52,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //         return Html::img('@web/uploads/'.$model->cover_image.'', ['style' => 'width:50px;']);
             //     }
             // ],
-            'title',
+            [
+                'attribute' => 'title',
+                'value' => function($model){
+                    return strlen($model->title) > 60 ? substr($model->title, 0, 60).'...' : $model->title;
+                }
+            ],
             // 'slug',
             // 'cover_image',
             [
@@ -60,9 +65,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'page.name'
             ],
             // 'content:ntext',
-            //'author',
+            'author',
             // 'status',
-            //'created_at',
+            [
+                'attribute' => 'created_at',
+                // 'format' => 'relativeTime', // displays as "2 hours ago"
+                'format' => ['date', 'php:d M Y H:i'],
+            ],
+            // 'created_at',
             //'updated_at',
             //'deleted_at',
             [

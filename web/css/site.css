@@ -11,9 +11,9 @@
 	--color-toggle: #25314b;
 	--color-hover: #25314b;
 	--color-li: rgba(255, 255, 255, 1);
-	--color-content: #ffffff;
+	/* --color-content: #ffffff; */
 	/* --color-content: #fafaf9; */
-	/* --color-content: #f3f5f9; */
+	--color-content: #f3f5f9;
 }
 input:read-only,
 textarea:read-only {
@@ -38,7 +38,7 @@ body{
 	border-radius: 0.3rem !important;
 }
 .brand-logo{
-	font-size: 1.3rem;
+	font-size: 1rem;
 }
 .brand-logo-big{
 	font-size: 2.3rem;
@@ -116,7 +116,7 @@ label .la-angle-down{
 	/* background: var(--color-theme); */
 	background: var(--bg-gradient);
 	z-index: 20;
-	border-right: 1px solid #eee;
+	border-right: 0px solid #eee;
 	transition: left 300ms;
 	scrollbar-width: thin;
 	overflow-y: auto;
@@ -338,7 +338,7 @@ main{
     content: "/";
 }
 .control-label{
-	margin-top: 0.3rem;
+	margin-top: 0.5rem;
 	font-weight: bold;
 }
 
@@ -536,8 +536,11 @@ main{
 .help-block{
 	color: red;
 }
+.file-preview {
+	background: #fff !important;
+}
 .file-drop-zone {
-    border: 1px dashed #fff;
+    /* border: 1px dashed #fff; */
     min-height: auto !important;
     border-radius: 4px;
     text-align: center;

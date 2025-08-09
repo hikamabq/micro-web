@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?= Html::a('Create Page', ['create'], ['class' => 'btn btn-success px-3']) ?>
+        <?= Html::a('Create Page', ['create'], ['class' => 'btn btn-success px-4']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -43,13 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\SerialColumn'
             ],
             'name',
-            'description',
+            // 'description',
             [
                 'attribute' => 'slug',
                 'format' => 'raw',
                 'value' => function($model){
                     $host = $_SERVER['HTTP_HOST'];
-                    return '<span>'.$host.'/'.$model->slug.'</span>';
+                    $protocol = $host ? 'http' : 'https';
+                    return '<a href="'.$protocol.'://'.$host.'/'.$model->slug.'" class="text-primary">'.$host.'/'.$model->slug.'</a>';
                 }
             ],
             'layout',

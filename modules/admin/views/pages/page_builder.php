@@ -482,7 +482,6 @@ editor.BlockManager.add('carousel', {
     category: 'Custom',
 });
 
-
 // Load data awal jika edit
 var initialData = $initialData;
 if (initialData.html) {

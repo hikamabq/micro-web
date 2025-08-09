@@ -32,8 +32,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <div class="bg-white p-2 border-bottom">
     <div class="d-flex align-items-center justify-content-between gap-2">
         <div>
-            <?= Html::a('Back', ['index'], ['class' => 'btn btn-light px-3']) ?>
-            <?= Html::button('Save & Publish', ['id' => 'save-btn', 'class' => 'btn btn-success px-3']) ?>
+            <?= Html::a('Back', ['index'], ['class' => 'btn btn-light px-4']) ?>
+            <?= Html::button('Save & Publish', ['id' => 'save-btn', 'class' => 'btn btn-success px-4']) ?>
         </div>
     </div>
 </div>

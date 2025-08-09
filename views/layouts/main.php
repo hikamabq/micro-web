@@ -37,10 +37,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
   <?php } ?>
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="container">
-            <a class="navbar-brand" href="#"> 
+            <a class="navbar-brand" href="<?= Url::to(['index']) ?>"> 
                 <div class="d-flex align-items-center justify-content-start">
                     <div class="me-3">
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="none"  stroke="#3b82f6"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-databricks"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l9 5l9 -5v-3l-9 5l-9 -5v-3l9 5l9 -5v-3l-9 5l-9 -5l9 -5l5.418 3.01" /></svg>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="none"  stroke="#2563eb"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-databricks"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l9 5l9 -5v-3l-9 5l-9 -5v-3l9 5l9 -5v-3l-9 5l-9 -5l9 -5l5.418 3.01" /></svg>
                     </div>
                     <div>
                         <span class="text-dark d-block brand-logo">halamia CMS</span>
@@ -52,9 +52,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="<?= Url::to(['index']) ?>">Home</a>
-                    </li>
                     <?php foreach($pages as $data){ ?>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="<?= Url::to(['pages', 'slug' => $data['slug']]) ?>"><?= $data['name'] ?></a>
