@@ -87,9 +87,9 @@ class PagesController extends Controller
             'model' => $model,
         ]);
     }
-    public function actionPageBuilder($id)
+    public function actionPageBuilder($slug)
     {
-        $model = $this->findModel($id);
+        $model = Pages::findOne(['slug' => $slug]);
         $media = Media::find()->select([new Expression("CONCAT('/uploads/', '', name) AS name")])->all();
 
         $result = [];

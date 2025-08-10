@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12 mb-3">
         <div class="p-5 bg-white rounded">
-            <h3 class="text-dark">Welcome to Halamia CMS</h3>
+            <h3 class="text-dark">Welcome to hicome CMS</h3>
             <b>Get Started</b>
             <p>You can customize your site from here.</p>
             <p>

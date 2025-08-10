@@ -24,43 +24,45 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        // 'filterModel' => $searchModel,
-        'layout' => '{items}{summary}{pager}',
-        'tableOptions' => [
-            'class' => 'table table-bordered'
-        ],
-        'columns' => [
-            [
-                'headerOptions' => [
-                    'style' => 'width:40px; min-width:40px; max-width:40px;'
-                ],
-                'contentOptions' => [
-                    'class' => 'text-center'
-                ],
-                'header' => '',
-                'class' => 'yii\grid\SerialColumn'
+    <div class="p-3 bg-white rounded">
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            // 'filterModel' => $searchModel,
+            'layout' => '{items}{summary}{pager}',
+            'tableOptions' => [
+                'class' => 'table table-bordered'
             ],
-            'username',
-            // 'password:ntext',
-            // 'password_reset_token:ntext',
-            // 'auth_key',
-            //'access_token',
-            //'role',
-            //'deleted_at',
-            [
-                'headerOptions' => [
-                    'style' => 'width:100px; min-width:100px; max-width:100px;'
+            'columns' => [
+                [
+                    'headerOptions' => [
+                        'style' => 'width:40px; min-width:40px; max-width:40px;'
+                    ],
+                    'contentOptions' => [
+                        'class' => 'text-center'
+                    ],
+                    'header' => '',
+                    'class' => 'yii\grid\SerialColumn'
                 ],
-                'class' => ActionColumn::className(),
-                'template' => '{update} {delete}',
-                'urlCreator' => function ($action, Users $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                'username',
+                // 'password:ntext',
+                // 'password_reset_token:ntext',
+                // 'auth_key',
+                //'access_token',
+                //'role',
+                //'deleted_at',
+                [
+                    'headerOptions' => [
+                        'style' => 'width:100px; min-width:100px; max-width:100px;'
+                    ],
+                    'class' => ActionColumn::className(),
+                    'template' => '{update} {delete}',
+                    'urlCreator' => function ($action, Users $model, $key, $index, $column) {
+                        return Url::toRoute([$action, 'id' => $model->id]);
+                    }
+                ],
             ],
-        ],
-    ]); ?>
+        ]); ?>
+    </div>
 
     <?php Pjax::end(); ?>
 
