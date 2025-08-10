@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="p-3 px-4 mt-3 bg-white rounded">
         <div class="row">
             <?php foreach($dataProvider->models as $data){ ?>
-            <div class="col-md-2 p-1">
+            <div class="col-6 col-sm-3 col-md-2 p-1">
                 <div class="card rounded-0 border-0">
                     <div class="card-body h-100 p-0">
                         <img src="<?= Url::to('@web/uploads/'.$data['name'].'') ?>" class="img-fluid position-relative" alt="">
