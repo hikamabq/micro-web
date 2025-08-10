@@ -58,9 +58,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'updated_at',
                 //'deleted_at',
                 [
-                    'headerOptions' => [
-                        'style' => 'width:150px; min-width:150px; max-width:150px;'
-                    ],
                     'class' => ActionColumn::className(),
                     'template' => '{update} {delete} {page-builder} ',
                     'buttons' => [
@@ -78,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                         'page-builder' => function ($url,$model,$key) {
                             if($model->layout == 'custom'){
-                                return Html::a('Customize', ['page-builder', 'slug' => $model->slug], ['class' => 'px-2 bg-white bg-opacity-10 text-secondary border rounded-1']);
+                                return Html::a('<svg  xmlns="http://www.w3.org/2000/svg"  width="12"  height="12"  viewBox="0 0 24 24"  fill="none"  stroke="#64748b"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-template"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 1a1 1 0 0 1 1 -1h14a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-14a1 1 0 0 1 -1 -1z" /><path d="M4 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 12l6 0" /><path d="M14 16l6 0" /><path d="M14 20l6 0" /></svg> Customize', ['page-builder', 'slug' => $model->slug], ['class' => 'px-2 bg-white bg-opacity-10 text-secondary border rounded-1']);
                             }
                         },
                     ],

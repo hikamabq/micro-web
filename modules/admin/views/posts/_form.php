@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-md-8">
-            <div class="p-3 bg-white rounded">
+            <div class="p-3 bg-white rounded mb-3">
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
                 
                 <?= $form->field($model, 'content')->widget(Summernote::class, [
@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
                 <?= $form->field($model, 'cover_image')->widget(FileInput::classname(), [
                     'options' => ['accept' => 'image/*'],
                     'pluginOptions' => [
-                        'browseClass' => 'btn btn-primary',
+                        'browseClass' => 'btn btn-success',
                         'initialPreview'=>[
                             Url::to(['@web/uploads/'.$model->cover_image.''])
                         ],
@@ -49,7 +49,7 @@ use yii\widgets\ActiveForm;
                 <?= $form->field($model, 'cover_image')->widget(FileInput::classname(), [
                     'options' => ['accept' => 'image/*'],
                     'pluginOptions' => [
-                        'browseClass' => 'btn btn-primary',
+                        'browseClass' => 'btn btn-success',
                         'showRemove' => false,
                         'showCancel' => false,
                         'showUpload' => false

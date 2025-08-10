@@ -11,19 +11,29 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         
         <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
-    </div>
-    <div class="p-3 bg-white rounded mb-3">
 
         <?php 
-        $options = [
-            'blog_post1' => 'Blog Post 1<br><img src="' . Yii::getAlias('@web/ui/blog_post1.svg') . '" style="max-width:170px" class="border rounded">',
-            'blog_post2' => 'Blog Post 2<br><img src="' . Yii::getAlias('@web/ui/blog_post2.svg') . '" style="max-width:170px" class="border rounded">',
-            'blog_post3' => 'Blog Post 3<br><img src="' . Yii::getAlias('@web/ui/blog_post3.svg') . '" style="max-width:170px" class="border rounded">',
-            'single_post' => 'Single Post<br><img src="' . Yii::getAlias('@web/ui/single_post.svg') . '" style="max-width:170px" class="border rounded">',
-            'custom' => 'Custom<br><img src="' . Yii::getAlias('@web/ui/custom.svg') . '" style="max-width:170px" class="border rounded">',
-        ];
+        echo $form->field($model, 'layout')->radioList([
+            'blog_post1' => 'Blog Post 1',
+            'blog_post2' => 'Blog Post 2',
+            'blog_post3' => 'Blog Post 3',
+            'single_post' => 'Single Post',
+            'custom' => 'Custom',
+        ], [
+            'item' => function($index, $label, $name, $checked, $value) {
+                return '
+                <div class="d-inline me-2">
+                    <label class="">
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="radio" name="' . $name . '" value="' . $value . '"' . ($checked ? ' checked' : '') . '> 
+                            '. $label.'
+                        </div>
+                        <img src="' . Yii::getAlias('@web/ui/'.$value.'.svg') . '" style="max-width:170px" class="border rounded mb-3">
+                    </label>
+                </div>';
+            }
+        ]);
         ?>
-        <?= $form->field($model, 'layout')->radioList($options, ['encode' => false]); ?> 
     </div>
 
 
