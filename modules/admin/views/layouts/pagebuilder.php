@@ -29,7 +29,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <body class="">
 <?php $this->beginBody() ?>
 
-<div class="bg-white p-2 border-bottom">
+<div class="bg-theme-2 p-2">
     <div class="d-flex align-items-center justify-content-between gap-2">
         <div>
             <?= Html::a('Back', ['index'], ['class' => 'btn btn-light px-4']) ?>

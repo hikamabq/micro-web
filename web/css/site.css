@@ -7,7 +7,8 @@
 	--color-active: rgba(255,255,255,0.2);
 	--color-dark: #ef4444;
 	--color-dark-hover: #ef4444;
-	--color-light: #cbd5e1;
+	--color-light: #ef4444;
+	--color-light: #cbd9e4;
 	--bg-gradient: linear-gradient(to bottom, #1f2937, #1f2937);
 	--color-toggle: #25314b;
 	--color-hover: #25314b;
@@ -335,7 +336,8 @@ main{
     background: transparent;
 }
 .breadcrumb-item + .breadcrumb-item::before {
-    content: "/";
+    /* content: "/"; */
+    content: "-";
     color: #94a3b8; /* warna abu-abu Bootstrap */
     /* padding: 0 0.5rem; */
 }
@@ -524,6 +526,10 @@ main{
 	background: var(--color-dark) !important;
 	border-color: var(--color-dark) !important;
 }
+.btn-light{
+	background: var(--color-light) !important;
+	border-color: var(--color-light) !important;
+}
 .hari-circle{
 	width: 30px;
 	height: 30px;
@@ -562,10 +568,6 @@ main{
 	width: 200px;
 	display: inline;
 }
-.note-popover .popover-content, .card-header.note-toolbar {
-    background-color: #ffffff !important;
-	border: 0px solid #eee;
-}
 .file-preview .fileinput-remove {
     border: 0 !important;
 	background: #fff !important;
@@ -577,4 +579,20 @@ main{
 .bg-pattern{
 	background-color: #f1f5f9;
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%23cfcfcf' fill-opacity='0.4'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+.note-popover .popover-content, .card-header.note-toolbar {
+    background-color: #fff !important;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0.35rem !important;
+}
+#posts-content-container{
+	padding: 0 !important;
+}
+.note-toolbar .btn-light{
+	background-color: #fff !important;
+	border-color: #ddd !important;
+	border-radius: 0 !important;
+}
+.note-btn-group.note-view {
+	float: none !important;
 }

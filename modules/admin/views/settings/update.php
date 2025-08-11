@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\modules\admin\models\settings\Settings $model */
 
-$this->title = 'Update Settings: ' . $model->title;
+$this->title = 'Update Setting: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Settings', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

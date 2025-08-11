@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
                             <input type="radio" name="' . $name . '" value="' . $value . '"' . ($checked ? ' checked' : '') . '> 
                             '. $label.'
                         </div>
-                        <img src="' . Yii::getAlias('@web/ui/'.$value.'.svg') . '" style="max-width:170px" class="border rounded mb-3">
+                        <img src="' . Yii::getAlias('@web/ui/'.$value.'.svg') . '" style="max-width:150px" class="border rounded mb-3">
                     </label>
                 </div>';
             }
