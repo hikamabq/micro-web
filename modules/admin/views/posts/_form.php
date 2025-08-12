@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-md-8">
-            <div class="p-3 bg-white rounded mb-3">
+            <div class="shadow p-3 bg-white rounded mb-3">
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
                 
                 <?= $form->field($model, 'content')->widget(Summernote::class, [
@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
         <div class="col-md-4">
-            <div class="p-3 bg-white rounded mb-3">
+            <div class="shadow p-3 bg-white rounded mb-3">
                 <?php if($model->id != null){ ?>
                 <?= $form->field($model, 'cover_image')->widget(FileInput::classname(), [
                     'options' => ['accept' => 'image/*'],
@@ -57,7 +57,7 @@ use yii\widgets\ActiveForm;
                 ]); ?>
                 <?php } ?>
             </div>
-            <div class="p-3 bg-white rounded">
+            <div class="shadow p-3 bg-white rounded">
                 <?= $form->field($model, 'id_pages')->radioList(
                     ArrayHelper::map(Pages::find()->where(['<>', 'layout', 'custom'])->all(), 'id', 'name'), 
                     [

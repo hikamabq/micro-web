@@ -15,70 +15,76 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-md-6">
-            <div class="p-3 bg-white border-bottom rounded-top">
-                <b class="d-block">Profile</b>
+            <div class="shadow">
+                <div class="p-3 bg-white border-bottom rounded-top">
+                    <b class="d-block">Profile</b>
+                </div>
+                <div class="p-3 bg-white mb-3 rounded-bottom">
+                    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+                
+                    <?= $form->field($model, 'tagline')->textInput(['maxlength' => true]) ?>
+    
+                    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+                </div>
             </div>
-            <div class="p-3 bg-white mb-3 rounded-bottom">
-                <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-            
-                <?= $form->field($model, 'tagline')->textInput(['maxlength' => true]) ?>
-
-                <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
-            </div>
-            <div class="p-3 bg-white border-bottom rounded-top">
-                <b class="d-block">Contact</b>
-            </div>
-            <div class="p-3 bg-white mb-3 rounded-bottom">
-                <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-                <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
-
-
-                <?= $form->field($model, 'facebook')->textInput(['maxlength' => true]) ?>
-
-                <?= $form->field($model, 'instagram')->textInput(['maxlength' => true]) ?>
-
-                <?= $form->field($model, 'youtube')->textInput(['maxlength' => true]) ?>
-
-                <?= $form->field($model, 'tiktok')->textInput(['maxlength' => true]) ?>
-
-                <?= $form->field($model, 'linkedin')->textInput(['maxlength' => true]) ?>
+            <div class="shadow">
+                <div class="p-3 bg-white border-bottom rounded-top">
+                    <b class="d-block">Contact</b>
+                </div>
+                <div class="p-3 bg-white mb-3 rounded-bottom">
+                    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    
+                    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+    
+    
+                    <?= $form->field($model, 'facebook')->textInput(['maxlength' => true]) ?>
+    
+                    <?= $form->field($model, 'instagram')->textInput(['maxlength' => true]) ?>
+    
+                    <?= $form->field($model, 'youtube')->textInput(['maxlength' => true]) ?>
+    
+                    <?= $form->field($model, 'tiktok')->textInput(['maxlength' => true]) ?>
+    
+                    <?= $form->field($model, 'linkedin')->textInput(['maxlength' => true]) ?>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="p-3 bg-white border-bottom rounded-top">
-                <b class="d-block">Logo</b>
-            </div>
-            <div class="p-3 bg-white rounded-bottom mb-3">
-                <?php if($model->id != null && !empty($model->logo)){ ?>
-                <?= $form->field($model, 'logo')->widget(FileInput::classname(), [
-                    'options' => [
-                        'accept' => 'image/*',
-                    ],
-                    'pluginOptions' => [
-                        'browseClass' => 'btn btn-success',
-                        'initialPreview'=>[
-                            Url::to(['@web/uploads/'.$model->logo.''])
+            <div class="shadow">
+                <div class="p-3 bg-white border-bottom rounded-top">
+                    <b class="d-block">Logo</b>
+                </div>
+                <div class="p-3 bg-white rounded-bottom mb-3">
+                    <?php if($model->id != null && !empty($model->logo)){ ?>
+                    <?= $form->field($model, 'logo')->widget(FileInput::classname(), [
+                        'options' => [
+                            'accept' => 'image/*',
                         ],
-                        'initialPreviewAsData'=>true,
-                        'showRemove' => false,
-                        'showCancel' => false,
-                        'showUpload' => false
-                    ]
-                ])->label(false); ?>
-                <?php }else{ ?>
-                <?= $form->field($model, 'logo')->widget(FileInput::classname(), [
-                    'options' => [
-                        'accept' => 'image/*',
-                    ],
-                    'pluginOptions' => [
-                        'browseClass' => 'btn btn-success',
-                        'showRemove' => false,
-                        'showCancel' => false,
-                        'showUpload' => false
-                    ]
-                ])->label(false); ?>
-                <?php } ?>
+                        'pluginOptions' => [
+                            'browseClass' => 'btn btn-success',
+                            'initialPreview'=>[
+                                Url::to(['@web/uploads/'.$model->logo.''])
+                            ],
+                            'initialPreviewAsData'=>true,
+                            'showRemove' => false,
+                            'showCancel' => false,
+                            'showUpload' => false
+                        ]
+                    ])->label(false); ?>
+                    <?php }else{ ?>
+                    <?= $form->field($model, 'logo')->widget(FileInput::classname(), [
+                        'options' => [
+                            'accept' => 'image/*',
+                        ],
+                        'pluginOptions' => [
+                            'browseClass' => 'btn btn-success',
+                            'showRemove' => false,
+                            'showCancel' => false,
+                            'showUpload' => false
+                        ]
+                    ])->label(false); ?>
+                    <?php } ?>
+                </div>
             </div>
         </div>
     </div>

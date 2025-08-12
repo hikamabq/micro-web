@@ -4,7 +4,7 @@ use yii\helpers\Url;
 ?>
 <div class="row">
     <div class="col-md-12 mb-3">
-        <div class="p-5 bg-white rounded">
+        <div class="p-5 bg-white rounded shadow">
             <h3 class="text-dark">Welcome to hicome CMS</h3>
             <b>Get Started</b>
             <p>You can customize your site from here.</p>
@@ -14,7 +14,7 @@ use yii\helpers\Url;
         </div>
     </div>
     <div class="col-md-4 mb-3">
-        <div class="p-5 bg-white rounded">
+        <div class="p-5 bg-white rounded shadow">
             <b class="d-block mb-3">Statistics</b>
             <div class="d-flex justify-content-between">
                 <span>Total Posts</span>

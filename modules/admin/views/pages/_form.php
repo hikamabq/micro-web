@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 <div class="form">
     <?php $form = ActiveForm::begin(); ?>
 
-    <div class="p-3 bg-white rounded mb-3">
+    <div class="p-3 bg-white rounded mb-3 shadow">
         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         
         <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>

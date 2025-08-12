@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'filterModel' => $searchModel,
             'layout' => '{items}{summary}{pager}',
             'tableOptions' => [
-                'class' => 'table table-bordered'
+                'class' => 'table table-bordered shadow'
             ],
             'columns' => [
                 [
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'page',
                     'value' => 'page.name'
                 ],
-                'author',
+                // 'author',
                 [
                     'attribute' => 'created_at',
                     'format' => ['date', 'php:d M Y H:i'],

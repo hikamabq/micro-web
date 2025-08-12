@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'filterModel' => $searchModel,
             'layout' => '{items}{summary}{pager}',
             'tableOptions' => [
-                'class' => 'table table-bordered'
+                'class' => 'table table-bordered shadow'
             ],
             'columns' => [
                 [
@@ -50,10 +50,20 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => function($model){
                         $host = $_SERVER['HTTP_HOST'];
                         $protocol = $host ? 'http' : 'https';
-                        return '<a href="'.$protocol.'://'.$host.'/'.$model->slug.'" class="text-danger">'.$host.'/'.$model->slug.'</a>';
+                        return '<svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg> <a href="'.$protocol.'://'.$host.'/'.$model->slug.'" class="">'.$host.'/'.$model->slug.'</a>';
                     }
                 ],
-                'layout',
+                [
+                    'attribute' => 'layout',
+                    'format' => 'raw',
+                    'value' => function($model){
+                        if($model->layout == 'custom'){
+                            return '<span class="small py-1 px-2 bg-success bg-opacity-10 text-success d-inline align-items-center me-2 rounded-1"><svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="#4ade80"  class="icon icon-tabler icons-tabler-filled icon-tabler-template"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 3a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" /><path d="M9 11a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2z" /><path d="M20 11a1 1 0 0 1 0 2h-6a1 1 0 0 1 0 -2z" /><path d="M20 15a1 1 0 0 1 0 2h-6a1 1 0 0 1 0 -2z" /><path d="M20 19a1 1 0 0 1 0 2h-6a1 1 0 0 1 0 -2z" /></svg> Custom </span>';
+                        }else{
+                            return '<span class="small py-1 px-2 bg-success bg-opacity-10 text-success d-inline align-items-center me-2 rounded-1"><svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="#4ade80"  class="icon icon-tabler icons-tabler-filled icon-tabler-article"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h14zm-2 12h-10l-.117 .007a1 1 0 0 0 0 1.986l.117 .007h10l.117 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm0 -4h-10l-.117 .007a1 1 0 0 0 0 1.986l.117 .007h10l.117 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm0 -4h-10l-.117 .007a1 1 0 0 0 0 1.986l.117 .007h10l.117 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z" /></svg> Post </span> '.$model->layout.'';
+                        }
+                    }
+                ],
                 // 'created_at',
                 //'updated_at',
                 //'deleted_at',
@@ -78,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                         'page-builder' => function ($url,$model,$key) {
                             if($model->layout == 'custom'){
-                                return Html::a('<svg  xmlns="http://www.w3.org/2000/svg"  width="12"  height="12"  viewBox="0 0 24 24"  fill="none"  stroke="#64748b"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-template"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 1a1 1 0 0 1 1 -1h14a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-14a1 1 0 0 1 -1 -1z" /><path d="M4 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M14 12l6 0" /><path d="M14 16l6 0" /><path d="M14 20l6 0" /></svg> Customize', ['page-builder', 'slug' => $model->slug], ['class' => 'px-2 bg-white bg-opacity-10 text-secondary border rounded-1']);
+                                return Html::a('Customize', ['page-builder', 'slug' => $model->slug], ['class' => 'px-2 bg-white bg-opacity-10 text-secondary border rounded-1']);
                             }
                         },
                     ],

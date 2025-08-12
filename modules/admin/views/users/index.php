@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'filterModel' => $searchModel,
             'layout' => '{items}{summary}{pager}',
             'tableOptions' => [
-                'class' => 'table table-bordered'
+                'class' => 'table table-bordered shadow'
             ],
             'columns' => [
                 [
