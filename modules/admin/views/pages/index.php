@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    <div class="p-3 bg-white rounded">
+    <div class="table-responsive">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             // 'filterModel' => $searchModel,
@@ -58,6 +58,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'updated_at',
                 //'deleted_at',
                 [
+                    'headerOptions' => [
+                        'style' => 'width:180px; min-width:180px; max-width:180px;'
+                    ],
                     'class' => ActionColumn::className(),
                     'template' => '{update} {delete} {page-builder} ',
                     'buttons' => [

@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <div class="p-3 bg-white rounded">
+    <div class="">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             // 'filterModel' => $searchModel,
@@ -43,40 +43,25 @@ $this->params['breadcrumbs'][] = $this->title;
                     'header' => '',
                     'class' => 'yii\grid\SerialColumn'
                 ],
-
-                // 'id',
-                // 'id_pages',
-                // [
-                //     'attribute' => 'cover_image',
-                //     'format' => 'raw',
-                //     'value' => function($model){
-                //         return Html::img('@web/uploads/'.$model->cover_image.'', ['style' => 'width:50px;']);
-                //     }
-                // ],
                 [
                     'attribute' => 'title',
                     'value' => function($model){
                         return strlen($model->title) > 60 ? substr($model->title, 0, 60).'...' : $model->title;
                     }
                 ],
-                // 'slug',
-                // 'cover_image',
                 [
                     'attribute' => 'page',
                     'value' => 'page.name'
                 ],
-                // 'content:ntext',
                 'author',
-                // 'status',
                 [
                     'attribute' => 'created_at',
-                    // 'format' => 'relativeTime', // displays as "2 hours ago"
                     'format' => ['date', 'php:d M Y H:i'],
                 ],
-                // 'created_at',
-                //'updated_at',
-                //'deleted_at',
                 [
+                    'headerOptions' => [
+                        'style' => 'width:180px; min-width:180px; max-width:180px;'
+                    ],
                     'class' => ActionColumn::className(),
                     'buttons' => [
                         'view' => function ($url,$model,$key) {
