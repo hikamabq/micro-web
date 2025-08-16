@@ -5,13 +5,13 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\modules\admin\models\media\Media $model */
 
-$this->title = 'Create Media';
+$this->title = 'Upload Media';
 $this->params['breadcrumbs'][] = ['label' => 'Media', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="media-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <?= $this->render('_form', [
         'model' => $model,

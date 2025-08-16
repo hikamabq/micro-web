@@ -89,15 +89,15 @@ class PagesController extends Controller
     }
     public function actionPageBuilder($slug)
     {
+        $url = Yii::$app->request->baseUrl.'/uploads/';
         $model = Pages::findOne(['slug' => $slug]);
-        $media = Media::find()->select([new Expression("CONCAT('/uploads/', '', name) AS name")])->all();
+        $media = Media::find()->select([new Expression("CONCAT('$url', '', name) AS name")])->all();
 
         $result = [];
         foreach ($media as $data) {
             $result[] = $data['name']; 
         }
         $result = json_encode($result);
-
         
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {

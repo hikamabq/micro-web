@@ -39,33 +39,12 @@ class MediaController extends Controller
      */
     public function actionIndex()
     {
-        $model = new Media();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) ) {
-                $upload = UploadedFile::getInstances($model, 'name');
-
-                if (!empty($upload)) {
-                    foreach($upload as $data){
-                        $name_file = rand();
-                        $data->saveAs('uploads/' . $name_file . '.' . $data->extension);
-                        $model = new Media();
-                        $model->name = $name_file . '.' . $data->extension;
-                        $model->save();
-                    }
-                }
-                return $this->redirect(['index']);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
         $searchModel = new MediaSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'model' => $model,
+            'dataProvider' => $dataProvider
         ]);
     }
 
@@ -92,8 +71,19 @@ class MediaController extends Controller
         $model = new Media();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post()) ) {
+                $upload = UploadedFile::getInstances($model, 'name');
+
+                if (!empty($upload)) {
+                    foreach($upload as $data){
+                        $name_file = rand();
+                        $data->saveAs('uploads/' . $name_file . '.' . $data->extension);
+                        $model = new Media();
+                        $model->name = $name_file . '.' . $data->extension;
+                        $model->save();
+                    }
+                }
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();

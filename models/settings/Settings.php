@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\admin\models\settings;
+namespace app\models\settings;
 
 use Yii;
 
@@ -9,7 +9,6 @@ use Yii;
  *
  * @property int $id
  * @property string|null $logo
- * @property string|null $logo_width
  * @property string $title
  * @property string|null $tagline
  * @property string|null $email
@@ -42,7 +41,7 @@ class Settings extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['logo', 'logo_width', 'tagline', 'email', 'phone', 'address', 'facebook', 'instagram', 'youtube', 'tiktok', 'linkedin', 'updated_at', 'deleted_at'], 'default', 'value' => null],
+            [['logo', 'tagline', 'email', 'phone', 'address', 'facebook', 'instagram', 'youtube', 'tiktok', 'linkedin', 'updated_at', 'deleted_at'], 'default', 'value' => null],
             [['title'], 'required'],
             [['created_at', 'updated_at', 'deleted_at'], 'safe'],
             [['logo', 'title', 'tagline', 'email', 'phone', 'address', 'facebook', 'instagram', 'youtube', 'tiktok', 'linkedin'], 'string', 'max' => 255],

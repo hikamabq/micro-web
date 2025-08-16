@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'filterModel' => $searchModel,
             'layout' => '{items}{summary}{pager}',
             'tableOptions' => [
-                'class' => 'table table-bordered shadow'
+                'class' => 'table table-bordered shadow-sm'
             ],
             'columns' => [
                 [
@@ -48,9 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'slug',
                     'format' => 'raw',
                     'value' => function($model){
-                        $host = $_SERVER['HTTP_HOST'];
-                        $protocol = $host ? 'http' : 'https';
-                        return '<svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg> <a href="'.$protocol.'://'.$host.'/'.$model->slug.'" class="">'.$host.'/'.$model->slug.'</a>';
+                        return '/'.$model->slug.'';
                     }
                 ],
                 [

@@ -5,11 +5,14 @@
 
 use app\assets\AppAsset;
 use app\models\pages\Pages;
+use app\models\settings\Settings;
 use app\widgets\Alert;
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 AppAsset::register($this);
 $pages = Pages::find()->select(['name','slug'])->all();
+$setting = Settings::findOne(['id' => 1]);
 
 $this->registerCsrfMetaTags();
 $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
@@ -35,12 +38,18 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         </div>
     </div>
   <?php } ?>
-    <nav class="navbar navbar-expand-lg bg-white">
+    <nav class="navbar navbar-expand-lg bg-white py-3">
         <div class="container">
             <a class="navbar-brand" href="<?= Url::to(['index']) ?>"> 
                 <div class="d-flex align-items-center justify-content-start">
                     <div class="me-1">
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="#ef4444"  class="icon icon-tabler icons-tabler-filled icon-tabler-copyright"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-2.34 5.659a4.016 4.016 0 0 0 -5.543 .23a3.993 3.993 0 0 0 0 5.542a4.016 4.016 0 0 0 5.543 .23a1 1 0 0 0 -1.32 -1.502c-.81 .711 -2.035 .66 -2.783 -.116a1.993 1.993 0 0 1 0 -2.766a2.016 2.016 0 0 1 2.783 -.116a1 1 0 0 0 1.32 -1.501z" /></svg>
+                        <?php 
+                        if($setting->logo != null){
+                            echo Html::img('@web/uploads/'.$setting->logo.'', ['style' => 'width:'.$setting->logo_width.';']);
+                        }else{
+                            echo '<svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="#475569"  class="icon icon-tabler icons-tabler-filled icon-tabler-copyright"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-2.34 5.659a4.016 4.016 0 0 0 -5.543 .23a3.993 3.993 0 0 0 0 5.542a4.016 4.016 0 0 0 5.543 .23a1 1 0 0 0 -1.32 -1.502c-.81 .711 -2.035 .66 -2.783 -.116a1.993 1.993 0 0 1 0 -2.766a2.016 2.016 0 0 1 2.783 -.116a1 1 0 0 0 1.32 -1.501z" /></svg>';
+                        }
+                        ?>
                     </div>
                     <div>
                         <span class="text-dark d-block brand-logo">Conteno CMS</span>

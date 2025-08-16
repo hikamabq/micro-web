@@ -47,9 +47,13 @@ CREATE TABLE `media` (
 
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `logo` varchar(255) NULL,
+  `logo_header` varchar(255) NULL,
+  `logo_header_width` varchar(255) NULL,
+  `logo_footer` varchar(255) NULL,
+  `logo_footer_width` varchar(255) NULL,
   `title` varchar(255) NOT NULL,
   `tagline` varchar(255) NULL,
+  `description` text NULL,
   `email` varchar(255) NULL,
   `phone` varchar(255) NULL,
   `address` varchar(255) NULL,

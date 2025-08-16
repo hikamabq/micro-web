@@ -6,6 +6,7 @@ use app\assets\GrapesJsAsset;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Page */
+$url = Url::to(["save", "id" => $model->id]);
 
 $this->title = $model->isNewRecord ? 'Buat Halaman Baru' : 'Edit Halaman: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Halaman', 'url' => ['index']];
@@ -546,7 +547,7 @@ $('#save-btn').on('click', function() {
         css: editor.getCss(),
         html: editor.getHtml()
     };
-    var url = '/admin/pages/save?id=$model->id';
+    var url = '$url';
     // Ambil token dari meta tag
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 

@@ -19,39 +19,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h3><?= Html::encode($this->title) ?></h3>
 
-    <div class="media-form shadow p-3 bg-white rounded mb-3">
-
-        <?php $form = ActiveForm::begin(); ?>
-
-        <?= $form->field($model, 'name[]')->widget(FileInput::classname(), [
-            'options' => [
-                'accept' => 'image/*',
-                'multiple' => true
-            ],
-            'pluginOptions' => [
-                'browseClass' => 'btn btn-success',
-                'showRemove' => false,
-                'showCancel' => false,
-                'showUpload' => false
-            ]
-        ])->label(false); ?>
-
-        <div class="form-group mt-3">
-            <?= Html::a('Cancel', ['index'], ['class' => 'btn px-4 btn-light']) ?>
-            <?= Html::submitButton('Save', ['class' => 'btn px-4 btn-success']) ?>
-        </div>
-
-        <?php ActiveForm::end(); ?>
-
-    </div>
+    <p>
+        <?= Html::a('Upload Media', ['create'], ['class' => 'btn btn-success px-4']) ?>
+    </p>
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <div class="p-3 px-4 mt-3 bg-white rounded shadow">
+    <div class="p-3 px-4 bg-white rounded shadow-sm">
         <div class="row">
             <?php foreach($dataProvider->models as $data){ ?>
-            <div class="col-6 col-sm-3 col-md-2 p-1">
+            <div class="col-4 col-sm-3 col-md-2 p-1">
                 <div class="card rounded-0 border-0">
                     <div class="card-body h-100 p-0">
                         <img src="<?= Url::to('@web/uploads/'.$data['name'].'') ?>" class="img-fluid position-relative" alt="">

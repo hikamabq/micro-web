@@ -50,9 +50,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 
     <div class="main-content">
-        <header class="bg-trans d-flex justify-content-between align-items-center p-2">
+        <header class="bg-trans d-flex justify-content-between align-items-center py-2 px-4">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="menu-toggle">
+                <div class="menu-toggle d-block d-lg-none">
                     <label for="sidebar-toggle">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
                     </label>
@@ -73,6 +73,12 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         ]);
                     }
                     ?>
+                    <!-- <ul class="breadcrumb">
+                        <li><a href="#">First level</a></li>
+                        <li><a href="#">Second level</a></li>
+                        <li><a href="#">Third level</a></li>
+                        <li><a href="#">Current level</a></li>
+                    </ul> -->
                 </div>
             </div>
 

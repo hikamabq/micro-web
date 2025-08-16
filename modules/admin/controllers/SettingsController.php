@@ -7,6 +7,7 @@ use app\modules\admin\models\settings\SettingsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * SettingsController implements the CRUD actions for Settings model.
@@ -94,8 +95,19 @@ class SettingsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $gambar_lama = $model->logo;
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post()) ) {
+            if ($model->logo == null) {
+                $model->logo = $gambar_lama;
+            }
+            $upload = UploadedFile::getInstance($model, 'logo');
+            $name_file = rand();
+            if (!empty($upload)) {
+                $upload->saveAs('uploads/' . $name_file . '.' . $upload->extension);
+                $model->logo = $name_file . '.' . $upload->extension;
+            }
+            $model->save();
             return $this->redirect(['index']);
         }
 

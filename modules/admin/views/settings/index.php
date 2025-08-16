@@ -16,43 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3><?= Html::encode($this->title) ?></h3>
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
-        <div class="col-md-6">
-            <div class="shadow">
-                <div class="p-3 bg-white border-bottom rounded-top">
-                    <b class="d-block">Profile</b>
-                </div>
-                <div class="p-3 bg-white mb-3 rounded-bottom">
-                    <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-                
-                    <?= $form->field($model, 'tagline')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-    
-                    <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-                </div>
-            </div>
-            <div class="shadow">
-                <div class="p-3 bg-white border-bottom rounded-top">
-                    <b class="d-block">Contact</b>
-                </div>
-                <div class="p-3 bg-white mb-3 rounded-bottom">
-                    <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-    
-                    <?= $form->field($model, 'phone')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-    
-    
-                    <?= $form->field($model, 'facebook')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-    
-                    <?= $form->field($model, 'instagram')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-    
-                    <?= $form->field($model, 'youtube')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-    
-                    <?= $form->field($model, 'tiktok')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-    
-                    <?= $form->field($model, 'linkedin')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="shadow">
+        <div class="col-md-12">
+            <div class="shadow-sm">
                 <div class="p-3 bg-white border-bottom rounded-top">
                     <b class="d-block">Logo</b>
                 </div>
@@ -88,6 +53,45 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ])->label(false); ?>
                     <?php } ?>
+
+                    <?= $form->field($model, 'logo_width')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="shadow-sm">
+                <div class="p-3 bg-white border-bottom rounded-top">
+                    <b class="d-block">Profile</b>
+                </div>
+                <div class="p-3 bg-white mb-3 rounded-bottom">
+                    <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+                
+                    <?= $form->field($model, 'tagline')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+    
+                    <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="shadow-sm">
+                <div class="p-3 bg-white border-bottom rounded-top">
+                    <b class="d-block">Contact</b>
+                </div>
+                <div class="p-3 bg-white mb-3 rounded-bottom">
+                    <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+    
+                    <?= $form->field($model, 'phone')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+    
+    
+                    <?= $form->field($model, 'facebook')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+    
+                    <?= $form->field($model, 'instagram')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+    
+                    <?= $form->field($model, 'youtube')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+    
+                    <?= $form->field($model, 'tiktok')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+    
+                    <?= $form->field($model, 'linkedin')->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
             </div>
         </div>
