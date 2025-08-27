@@ -8,12 +8,16 @@ use Yii;
  * This is the model class for table "settings".
  *
  * @property int $id
- * @property string|null $logo
+ * @property string|null $logo_header
+ * @property string|null $logo_header_width
+ * @property string|null $logo_footer
+ * @property string|null $logo_footer_width
  * @property string $title
  * @property string|null $tagline
+ * @property string|null $description
+ * @property string|null $address
  * @property string|null $email
  * @property string|null $phone
- * @property string|null $address
  * @property string|null $facebook
  * @property string|null $instagram
  * @property string|null $youtube
@@ -41,10 +45,11 @@ class Settings extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['logo', 'tagline', 'email', 'phone', 'address', 'facebook', 'instagram', 'youtube', 'tiktok', 'linkedin', 'updated_at', 'deleted_at'], 'default', 'value' => null],
+            [['logo_header', 'logo_header_width', 'logo_footer', 'logo_footer_width', 'tagline', 'description', 'address', 'email', 'phone', 'facebook', 'instagram', 'youtube', 'tiktok', 'linkedin', 'updated_at', 'deleted_at'], 'default', 'value' => null],
             [['title'], 'required'],
+            [['description'], 'string'],
             [['created_at', 'updated_at', 'deleted_at'], 'safe'],
-            [['logo', 'title', 'tagline', 'email', 'phone', 'address', 'facebook', 'instagram', 'youtube', 'tiktok', 'linkedin'], 'string', 'max' => 255],
+            [['logo_header', 'logo_header_width', 'logo_footer', 'logo_footer_width', 'title', 'tagline', 'address', 'email', 'phone', 'facebook', 'instagram', 'youtube', 'tiktok', 'linkedin'], 'string', 'max' => 255],
         ];
     }
 
@@ -55,12 +60,16 @@ class Settings extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'logo' => 'Logo',
+            'logo_header' => 'Logo Header',
+            'logo_header_width' => 'Logo Header Width',
+            'logo_footer' => 'Logo Footer',
+            'logo_footer_width' => 'Logo Footer Width',
             'title' => 'Title',
             'tagline' => 'Tagline',
+            'description' => 'Description',
+            'address' => 'Address',
             'email' => 'Email',
             'phone' => 'Phone',
-            'address' => 'Address',
             'facebook' => 'Facebook',
             'instagram' => 'Instagram',
             'youtube' => 'Youtube',

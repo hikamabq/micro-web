@@ -11,6 +11,15 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var app\modules\admin\models\posts\Posts $model */
 /** @var yii\widgets\ActiveForm $form */
+$this->registerCssFile(
+    '@web/richtexteditor/rte_theme_default.css'
+);
+$this->registerJsFile(
+    '@web/richtexteditor/rte.js'
+);
+$this->registerJsFile(
+    '@web/richtexteditor/plugins/all_plugins.js'
+);
 ?>
 
 <div class="posts-form">
@@ -18,18 +27,28 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="shadow-sm p-3 bg-white rounded mb-3">
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
                 
-                <?= $form->field($model, 'content')->widget(Summernote::class, [
-                    'useKrajeePresets' => true,
-                ]); ?>
-    
+                <?= $form->field($model, 'content')->textarea(['id' => 'editor']); ?>
+
                 <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
+
+                <?= $form->field($model, 'id_pages')->radioList(
+                    ArrayHelper::map(Pages::find()->where(['<>', 'layout', 'custom'])->all(), 'id', 'name'), 
+                    [
+                        'item' => function($index, $label, $name, $checked, $value) {
+                            return '<div class="d-block my-2 w-100 bg-light p-2 rounded"><div class="radio"><label class="w-100 d-flex align-items-center">' . 
+                                Html::radio($name, $checked, ['value' => $value, 'class' => 'me-2']) . 
+                                $label . 
+                                '</label></div></div>';
+                        }
+                    ]); 
+                ?> 
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-12">
             <div class="shadow-sm p-3 bg-white rounded mb-3">
                 <?php if($model->id != null){ ?>
                 <?= $form->field($model, 'cover_image')->widget(FileInput::classname(), [
@@ -61,19 +80,6 @@ use yii\widgets\ActiveForm;
                 ]); ?>
                 <?php } ?>
             </div>
-            <div class="shadow-sm p-3 bg-white rounded">
-                <?= $form->field($model, 'id_pages')->radioList(
-                    ArrayHelper::map(Pages::find()->where(['<>', 'layout', 'custom'])->all(), 'id', 'name'), 
-                    [
-                        'item' => function($index, $label, $name, $checked, $value) {
-                            return '<div class="d-block my-2 w-100 bg-light p-2 rounded"><div class="radio"><label class="w-100 d-flex align-items-center">' . 
-                                Html::radio($name, $checked, ['value' => $value, 'class' => 'me-2']) . 
-                                $label . 
-                                '</label></div></div>';
-                        }
-                    ]); 
-                ?> 
-            </div>
         </div>
     </div>
 
@@ -85,3 +91,8 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php 
+$this->registerJs('
+    var editor1 = new RichTextEditor("#editor", { editorResizeMode: "height" });
+');
+?>

@@ -18,7 +18,7 @@ class SettingsSearch extends Settings
     {
         return [
             [['id'], 'integer'],
-            [['logo', 'title', 'tagline', 'email', 'phone', 'address', 'facebook', 'instagram', 'youtube', 'tiktok', 'linkedin', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
+            [['logo_header', 'logo_header_width', 'logo_footer', 'logo_footer_width', 'title', 'tagline', 'description', 'address', 'email', 'phone', 'facebook', 'instagram', 'youtube', 'tiktok', 'linkedin', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
         ];
     }
 
@@ -65,12 +65,16 @@ class SettingsSearch extends Settings
             'deleted_at' => $this->deleted_at,
         ]);
 
-        $query->andFilterWhere(['like', 'logo', $this->logo])
+        $query->andFilterWhere(['like', 'logo_header', $this->logo_header])
+            ->andFilterWhere(['like', 'logo_header_width', $this->logo_header_width])
+            ->andFilterWhere(['like', 'logo_footer', $this->logo_footer])
+            ->andFilterWhere(['like', 'logo_footer_width', $this->logo_footer_width])
             ->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'tagline', $this->tagline])
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'phone', $this->phone])
-            ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'facebook', $this->facebook])
             ->andFilterWhere(['like', 'instagram', $this->instagram])
             ->andFilterWhere(['like', 'youtube', $this->youtube])

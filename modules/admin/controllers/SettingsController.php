@@ -95,17 +95,27 @@ class SettingsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $gambar_lama = $model->logo;
+        $gambar_lama = $model->logo_header;
+        $gambar_lama2 = $model->logo_footer;
 
         if ($this->request->isPost && $model->load($this->request->post()) ) {
-            if ($model->logo == null) {
-                $model->logo = $gambar_lama;
+            if ($model->logo_header == null) {
+                $model->logo_header = $gambar_lama;
             }
-            $upload = UploadedFile::getInstance($model, 'logo');
+            if ($model->logo_footer == null) {
+                $model->logo_footer = $gambar_lama2;
+            }
+            $upload = UploadedFile::getInstance($model, 'logo_header');
+            $upload2 = UploadedFile::getInstance($model, 'logo_footer');
             $name_file = rand();
+            $name_file2 = rand();
             if (!empty($upload)) {
                 $upload->saveAs('uploads/' . $name_file . '.' . $upload->extension);
-                $model->logo = $name_file . '.' . $upload->extension;
+                $model->logo_header = $name_file . '.' . $upload->extension;
+            }
+            if (!empty($upload2)) {
+                $upload2->saveAs('uploads/' . $name_file2 . '.' . $upload2->extension);
+                $model->logo_footer = $name_file2 . '.' . $upload2->extension;
             }
             $model->save();
             return $this->redirect(['index']);

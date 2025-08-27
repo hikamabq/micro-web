@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root{
 	/*orange template*/
-    --color-theme:#3b82f6;
+    --color-theme:#2563eb;
     --color-theme-2:#1f2937;
     --color-trans:rgba(0,0,0,0.02);
 	--color-active: rgba(255,255,255,0.2);
-	--color-dark: #3b82f6;
-	--color-dark-hover: #3b82f6;
-	--color-light: #3b82f6;
+	--color-dark: #2563eb;
+	--color-dark-hover: #2563eb;
+	--color-light: #2563eb;
 	--color-light: #cbd9e4;
 	--bg-gradient: linear-gradient(to bottom, #1f2937, #1f2937);
 	--color-toggle: #25314b;
@@ -521,6 +521,9 @@ main{
 	border-radius: 0;
 	font-weight: bold;
 	text-decoration: none;
+}
+.menu-nonactive{
+	color: rgba(255,255,255,0.5);
 }
 .btn-success{
 	background: var(--color-theme) !important;

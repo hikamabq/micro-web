@@ -7,7 +7,7 @@ $this->title = 'Dashboard';
 <div class="p-5 bg-white rounded shadow-sm">
     <div class="row">
         <div class="col-md-6">
-            <h3 class="text-dark">Welcome to hicome CMS</h3>
+            <h3 class="text-dark">Welcome to Conteno CMS</h3>
             <b>Get Started</b>
             <p>You can customize your site from here.</p>
             <p>
