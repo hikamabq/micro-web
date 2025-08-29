@@ -70,7 +70,7 @@ class Pages extends \yii\db\ActiveRecord
             'layout' => 'Layout',
             'html_content' => 'Html Content',
             'css_content' => 'Css Content',
-            'as_home' => 'As Home',
+            'as_home' => 'Set Home',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',
