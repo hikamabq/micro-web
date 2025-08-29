@@ -32,6 +32,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <div class="bg-theme-2 p-2">
     <div class="d-flex align-items-center justify-content-between gap-2">
         <div>
+            <h4 class="text-light">Custom Layout : <?= $_GET['slug']; ?></h4>
+        </div>
+        <div>
             <?= Html::a('Back', ['index'], ['class' => 'btn btn-light px-4']) ?>
             <?= Html::button('Save & Publish', ['id' => 'save-btn', 'class' => 'btn btn-success px-4']) ?>
         </div>

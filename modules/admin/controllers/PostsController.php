@@ -102,8 +102,8 @@ class PostsController extends Controller
             $model->loadDefaultValues();
         }
 
-        return $this->render('create', [
-            'model' => $model,
+        return $this->render('_form', [
+            'model' => $model
         ]);
     }
 
@@ -133,8 +133,8 @@ class PostsController extends Controller
             return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
-            'model' => $model,
+        return $this->render('_form', [
+            'model' => $model
         ]);
     }
 

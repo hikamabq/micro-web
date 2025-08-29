@@ -1,11 +1,22 @@
 <?php 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
+$this->title = $model->id == null ? 'Create Page' : 'Update Page';
+$this->params['breadcrumbs'][] = ['label' => 'Pages', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<h3><?= $this->title; ?></h3>
 
 <div class="form">
     <?php $form = ActiveForm::begin(); ?>
+
+    <div class="d-flex justify-content-between">
+        <h3><?= Html::encode($this->title) ?></h3>
+        <div class="form-group mb-3">
+            <?= Html::a('Back', ['index'], ['class' => 'btn px-4 btn-light']) ?>
+            <?= Html::submitButton('Save', ['class' => 'btn px-4 btn-success']) ?>
+        </div>
+    </div>
 
     <div class="p-3 bg-white rounded mb-3 shadow-sm">
         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
@@ -34,12 +45,6 @@ use yii\widgets\ActiveForm;
             }
         ]);
         ?>
-    </div>
-
-
-    <div class="form-group mt-3">
-        <?= Html::a('Back', ['index'], ['class' => 'btn px-4 btn-light']) ?>
-        <?= Html::submitButton('Save', ['class' => 'btn px-4 btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

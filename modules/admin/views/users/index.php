@@ -16,11 +16,13 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="users-index">
     <?php Pjax::begin(); ?>
 
-    <h3><?= Html::encode($this->title) ?></h3>
-
-    <p>
-        <?= Html::a('Create Users', ['create'], ['class' => 'btn btn-success px-4']) ?>
-    </p>
+    <div class="d-flex justify-content-between">
+        <h3><?= Html::encode($this->title) ?></h3>
+    
+        <p>
+            <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success px-4']) ?>
+        </p>
+    </div>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 

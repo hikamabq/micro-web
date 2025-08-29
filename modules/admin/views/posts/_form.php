@@ -8,6 +8,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
+$this->title = $model->id == null ? 'Create Post' : 'Update Post';
+$this->params['breadcrumbs'][] = ['label' => 'Posts', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 /** @var yii\web\View $this */
 /** @var app\modules\admin\models\posts\Posts $model */
 /** @var yii\widgets\ActiveForm $form */
@@ -25,7 +28,13 @@ $this->registerJsFile(
 <div class="posts-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
+    <div class="d-flex justify-content-between">
+        <h3><?= Html::encode($this->title) ?></h3>
+        <div class="form-group mb-3">
+            <?= Html::a('Back', ['index'], ['class' => 'btn px-4 btn-light']) ?>
+            <?= Html::submitButton('Save', ['class' => 'btn px-4 btn-success']) ?>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="shadow-sm p-3 bg-white rounded mb-3">
@@ -85,11 +94,6 @@ $this->registerJsFile(
                 <?php } ?>
             </div>
         </div>
-    </div>
-
-    <div class="form-group mt-3">
-        <?= Html::a('Back', ['index'], ['class' => 'btn px-4 btn-light']) ?>
-        <?= Html::submitButton('Save', ['class' => 'btn px-4 btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

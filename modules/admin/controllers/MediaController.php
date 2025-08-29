@@ -89,7 +89,7 @@ class MediaController extends Controller
             $model->loadDefaultValues();
         }
 
-        return $this->render('create', [
+        return $this->render('_form', [
             'model' => $model,
         ]);
     }
@@ -109,7 +109,7 @@ class MediaController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('update', [
+        return $this->render('_form', [
             'model' => $model,
         ]);
     }
