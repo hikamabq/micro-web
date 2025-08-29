@@ -170,6 +170,19 @@ class PagesController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionSetHome($id){
+        Pages::updateAll(['as_home' => null]);
+        $model = $this->findModel($id);
+        $model->as_home = 1;
+        $model->save();
+        return $this->redirect(['index']);
+    }
+    public function actionUnsetHome($id){
+        $model = $this->findModel($id);
+        $model->as_home = null;
+        $model->save();
+        return $this->redirect(['index']);
+    }
     /**
      * Finds the Pages model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

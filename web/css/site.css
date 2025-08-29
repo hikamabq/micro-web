@@ -603,6 +603,11 @@ main{
 .note-btn-group.note-view {
 	float: none !important;
 }
+.form-check {
+    display: block;
+    min-height: 0 !important;
+    margin-bottom: 0 !important;
+}
 
 
 /* 

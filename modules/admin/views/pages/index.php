@@ -64,6 +64,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                     }
                 ],
+                [
+                    'attribute' => 'as_home',
+                    'format' => 'raw',
+                    'value' => function($model){
+                        if($model->as_home != null){
+                            return Html::a('<div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked role="switch" id="switchCheckDefault"></div>', ['unset-home', 'id' => $model->id], ['class' => '']);
+                        }else{
+                            return Html::a('<div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"></div>', ['set-home', 'id' => $model->id], ['class' => '']);
+                        }
+                    }
+                ],
                 // 'created_at',
                 //'updated_at',
                 //'deleted_at',
