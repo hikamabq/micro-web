@@ -45,11 +45,7 @@ class SiteController extends Controller
         if(empty($pages) ){
             return $this->redirect(['index']);
         }else{
-            if($pages->layout != 'custom'){
-                $model = Posts::find()->joinWith(['page'])->where(['id_pages' => $pages->id])->orderBy(['id' => SORT_DESC])->all();
-            }else{
-                $model = $pages;
-            }
+            $model = Posts::find()->joinWith(['page'])->where(['id_pages' => $pages->id])->orderBy(['id' => SORT_DESC])->all();
         }
         return $this->render(''.$pages->layout.'', [
             'pages' => $pages,

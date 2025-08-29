@@ -35,17 +35,21 @@ $this->registerJsFile(
 
                 <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
-                <?= $form->field($model, 'id_pages')->radioList(
-                    ArrayHelper::map(Pages::find()->where(['<>', 'layout', 'custom'])->all(), 'id', 'name'), 
-                    [
-                        'item' => function($index, $label, $name, $checked, $value) {
-                            return '<div class="d-block my-2 w-100 bg-light p-2 rounded"><div class="radio"><label class="w-100 d-flex align-items-center">' . 
-                                Html::radio($name, $checked, ['value' => $value, 'class' => 'me-2']) . 
-                                $label . 
-                                '</label></div></div>';
-                        }
-                    ]); 
-                ?> 
+                <div class="row">
+                    <div class="col-md-4">
+                        <?= $form->field($model, 'id_pages')->radioList(
+                            ArrayHelper::map(Pages::find()->all(), 'id', 'name'), 
+                            [
+                                'item' => function($index, $label, $name, $checked, $value) {
+                                    return '<div class="d-block my-2 w-100 bg-light p-2 border rounded"><div class="radio"><label class="w-100 d-flex align-items-center">' . 
+                                        Html::radio($name, $checked, ['value' => $value, 'class' => 'me-2']) . 
+                                        $label . 
+                                        '</label></div></div>';
+                                }
+                            ]); 
+                        ?> 
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-12">

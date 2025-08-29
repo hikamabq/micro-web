@@ -17,7 +17,8 @@ class GrapesJsAsset extends AssetBundle
         'pagebuilder/stylesheets/grapes.min.css',
         'pagebuilder/stylesheets/grapesjs-preset-webpage.min.css',
         'pagebuilder/stylesheets/tooltip.css',
-        'pagebuilder/stylesheets/demos.css',
+        'pagebuilder/stylesheets/pages.css',
+        'pagebuilder/custom.css',
     ];
     
     public $js = [

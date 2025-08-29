@@ -14,112 +14,12 @@ $this->params['breadcrumbs'][] = $model->isNewRecord ? 'Buat Baru' : 'Edit';
 
 GrapesJsAsset::register($this);
 Html::csrfMetaTags();
-
-// CSS tambahan
-$this->registerCss(<<<CSS
-.icons-flex {
-    background-size: 70% 65% !important;
-    height: 15px;
-    width: 17px;
-    opacity: 0.9;
-}
-.icon-dir-row {
-    background: url("/img/flex-dir-row.png") no-repeat center;
-}
-.icon-dir-row-rev {
-    background: url("/img/flex-dir-row-rev.png") no-repeat center;
-}
-.icon-dir-col {
-    background: url("/img/flex-dir-col.png") no-repeat center;
-}
-.icon-dir-col-rev {
-    background: url("/img/flex-dir-col-rev.png") no-repeat center;
-}
-.icon-just-start{
-    background: url("/img/flex-just-start.png") no-repeat center;
-}
-.icon-just-end{
-    background: url("/img/flex-just-end.png") no-repeat center;
-}
-.icon-just-sp-bet{
-    background: url("/img/flex-just-sp-bet.png") no-repeat center;
-}
-.icon-just-sp-ar{
-    background: url("/img/flex-just-sp-ar.png") no-repeat center;
-}
-.icon-just-sp-cent{
-    background: url("/img/flex-just-sp-cent.png") no-repeat center;
-}
-.icon-al-start{
-    background: url("/img/flex-al-start.png") no-repeat center;
-}
-.icon-al-end{
-    background: url("/img/flex-al-end.png") no-repeat center;
-}
-.icon-al-str{
-    background: url("/img/flex-al-str.png") no-repeat center;
-}
-.icon-al-center{
-    background: url("/img/flex-al-center.png") no-repeat center;
-}
-
-[data-tooltip]::after {
-    background: rgba(51, 51, 51, 0.9);
-}
-
-.gjs-pn-commands {
-    min-height: 40px;
-}
-
-#gjs-sm-float {
-    display: none;
-}
-
-.gjs-logo-version {
-    background-color: #756467;
-}
-
-.gjs-pn-btn.gjs-pn-active {
-    box-shadow: none;
-}
-
-.CodeMirror {
-    min-height: 600px;
-    margin-bottom: 8px;
-}
-
-.grp-handler-close {
-    background-color: transparent;
-    color: #ddd;
-}
-
-.grp-handler-cp-wrap {
-    border-color: transparent;
-}
-/* Form untuk judul dan slug */
-.page-info-form {
-    background: #fff;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-CSS
-);
 ?>
 
 <div class="page-editor-index">
     <div style="display: none">
-        <!-- <div class="gjs-logo-cont">
-            <a href="https://grapesjs.com"><img class="gjs-logo" src="/img/grapesjs-logo-cl.png"></a>
-            <div class="gjs-logo-version"></div>
-        </div> -->
     </div>
-
-    <!-- <div id="gjs" style="height:0px; overflow:scroll;"></div> -->
     <div id="gjs" style="height: 100vh; overflow: auto;"></div>
-
 </div>
 
 <?php
@@ -440,6 +340,45 @@ var editor = grapesjs.init({
     },
 });
 
+editor.BlockManager.add('dynamic-post-3', {
+  label: 'Dynamic Post 3',
+  content: `
+    <div class="dynamic-block" data-dynamic="dynamic_post_3">
+        <div style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
+            <b>Dynamic Post 3 Column</b><br>
+            <small>Content will be taken from the post</small>
+            <div style="display: grid; grid-template-columns: auto auto auto; gap: 50px;">
+                <div style="border:1px dashed #aaa; height:200px;">1</div>
+                <div style="border:1px dashed #aaa; height:200px;">2</div>
+                <div style="border:1px dashed #aaa; height:200px;">3</div>
+            </div>
+        </div>
+    </div>
+    <!-- dynamic_post_3 -->
+  `,
+  category: 'Custom',
+});
+
+editor.BlockManager.add('dynamic-post-4', {
+  label: 'Dynamic Post 4',
+  content: `
+    <div class="dynamic-block" data-dynamic="dynamic_post_4">
+        <div style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
+            <b>Dynamic Post 4 Column</b><br>
+            <small>Content will be taken from the post</small>
+            <div style="display: grid; grid-template-columns: auto auto auto auto; gap: 50px;">
+                <div style="border:1px dashed #aaa; height:200px;">1</div>
+                <div style="border:1px dashed #aaa; height:200px;">2</div>
+                <div style="border:1px dashed #aaa; height:200px;">3</div>
+                <div style="border:1px dashed #aaa; height:200px;">4</div>
+            </div>
+        </div>
+    </div>
+    <!-- dynamic_post_4 -->
+  `,
+  category: 'Custom',
+});
+
 editor.BlockManager.add('container', {
     label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="48"  height="48"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-container"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 4v.01" /><path d="M20 20v.01" /><path d="M20 16v.01" /><path d="M20 12v.01" /><path d="M20 8v.01" /><path d="M8 4m0 1a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1z" /><path d="M4 4v.01" /><path d="M4 20v.01" /><path d="M4 16v.01" /><path d="M4 12v.01" /><path d="M4 8v.01" /></svg> Container',
     content: `
@@ -482,6 +421,7 @@ editor.BlockManager.add('carousel', {
 </div>`,
     category: 'Custom',
 });
+
 
 // Load data awal jika edit
 var initialData = $initialData;

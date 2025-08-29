@@ -1,41 +1,79 @@
-admin/
-    controllers/
-        DefaultController.php
-        PagesController.php
-        PostsController.php
-        SettingsController.php 
-    
+Contena CMS
 
-ID 
-ID Pages 
-Title
-Subtitle
-Slug
-Cover Image
-Content
-Author
+MENU
+- Dashboard
+- Posts
+- Pages
+- Media
+- Users
+- Settings
+
+DATABASE
+
+Pages
+- id
+- name
+- slug
+- description
+- layout
+- html_content
+- css_content
+- created_at
+- updated_at
+- deleted_at
+
+Posts
+- id
+- id_pages
+- title
+- slug
+- cover_image
+- content
+- author
+- status
+- created_at
+- updated_at
+- deleted_at
+
+Media
+- id
+- name
+- created_at
+- updated_at
+- deleted_at
 
 
-------------
-HEADER
-------------
-------------
-SECTION 1 +
-    - Cover Image 
-    - Title 
-    - Subtitle
-SECTION 2 +
-    - POST A 
-        Title
-        Subtitle
-        Slug
-        Cover Image
-        Content
-        Author
-    - POST B
-    - POST C
-SECTION 3 +
-------------
-------------
-FOOTER
-------------
+Versi Baru
+KASUS
+menu :
+    - post_title    : artikel terkini 
+    - post_name     : arikel-terkini
+    - post_order    : 1
+    - post_type     : menu
+post :
+    - post_title        : makanan enak halal
+    - post_name         : makanan-enak-halal 
+    - post_html_content : <p><h1>makanan enak halal</h1></p>
+    - post_cover_image  : imgasaadda.png 
+    - post_status       : publish 
+    - post_type         : post
+
+PENYELESAIAN
+Posts
+- id
+- post_title
+- post_name (slug, link)
+- post_cover_image
+- post_html_content
+- post_css_content
+- post_author
+- post_status (draft, publish, trash)
+- post_type (pages, post, menu)
+- post_parent
+- post_order
+- created_at
+- updated_at
+- deleted_at
+
+Posts_meta
+- id

@@ -54,13 +54,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => 'page.name'
                 ],
                 // 'author',
-                [
-                    'attribute' => 'created_at',
-                    'format' => ['date', 'php:d M Y H:i'],
-                ],
+                // [
+                //     'attribute' => 'created_at',
+                //     'format' => ['date', 'php:d M Y H:i'],
+                // ],
                 [
                     'headerOptions' => [
-                        'style' => 'width:180px; min-width:180px; max-width:180px;'
+                        'style' => 'width:150px; min-width:150px; max-width:150px;'
                     ],
                     'class' => ActionColumn::className(),
                     'buttons' => [

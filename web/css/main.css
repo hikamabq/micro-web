@@ -48,3 +48,6 @@ ul {
 		height: auto;
 	}
 }
+.dynamic-block > div {
+    display: none; /* preview hanya muncul di editor, tidak di website */
+}
