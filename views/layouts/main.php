@@ -52,7 +52,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         ?>
                     </div>
                     <div>
-                        <span class="text-dark d-block brand-logo">Conteno CMS</span>
+                        <span class="text-dark d-block brand-logo"><?= ($setting->title == null ? 'Conteno CMS' : $setting->title) ?></span>
                     </div>
                 </div>
             </a>

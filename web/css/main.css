@@ -51,3 +51,7 @@ ul {
 .dynamic-block > div {
     display: none; /* preview hanya muncul di editor, tidak di website */
 }
+.hide-web{
+	border: none !important;
+	padding: 0 !important;
+}

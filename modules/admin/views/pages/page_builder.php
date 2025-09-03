@@ -346,12 +346,7 @@ editor.BlockManager.add('dynamic-post-3', {
     <div class="dynamic-block" data-dynamic="dynamic_post_3">
         <div style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
             <b>Dynamic Post 3 Column</b><br>
-            <small>Content will be taken from the post</small>
-            <div style="display: grid; grid-template-columns: auto auto auto; gap: 50px;">
-                <div style="border:1px dashed #aaa; height:200px;">1</div>
-                <div style="border:1px dashed #aaa; height:200px;">2</div>
-                <div style="border:1px dashed #aaa; height:200px;">3</div>
-            </div>
+            <small>Content will be taken from the $model->slug post</small>
         </div>
     </div>
     <!-- dynamic_post_3 -->
@@ -365,13 +360,7 @@ editor.BlockManager.add('dynamic-post-4', {
     <div class="dynamic-block" data-dynamic="dynamic_post_4">
         <div style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
             <b>Dynamic Post 4 Column</b><br>
-            <small>Content will be taken from the post</small>
-            <div style="display: grid; grid-template-columns: auto auto auto auto; gap: 50px;">
-                <div style="border:1px dashed #aaa; height:200px;">1</div>
-                <div style="border:1px dashed #aaa; height:200px;">2</div>
-                <div style="border:1px dashed #aaa; height:200px;">3</div>
-                <div style="border:1px dashed #aaa; height:200px;">4</div>
-            </div>
+            <small>Content will be taken from the $model->slug post</small>
         </div>
     </div>
     <!-- dynamic_post_4 -->
@@ -383,7 +372,7 @@ editor.BlockManager.add('container', {
     label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="48"  height="48"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-container"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 4v.01" /><path d="M20 20v.01" /><path d="M20 16v.01" /><path d="M20 12v.01" /><path d="M20 8v.01" /><path d="M8 4m0 1a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1z" /><path d="M4 4v.01" /><path d="M4 20v.01" /><path d="M4 16v.01" /><path d="M4 12v.01" /><path d="M4 8v.01" /></svg> Container',
     content: `
         <div class="container">
-        <div style="flex:1; min-height: 100px; border:1px dotted #aaa; padding:0px;" data-gjs-droppable="true" data-gjs-highlightable="true" draggable="true" data-gjs-name="Column"></div>
+        <div class="hide-web" style="flex:1; min-height: 100px; border:1px dotted #aaa; padding:10px;" data-gjs-droppable="true" data-gjs-highlightable="true" draggable="true" data-gjs-name="Column"></div>
       </div>`,
     category: 'Custom',
 });
@@ -391,7 +380,7 @@ editor.BlockManager.add('container-fluid', {
     label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="48"  height="48"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brackets-contain"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4h-4v16h4" /><path d="M17 4h4v16h-4" /><path d="M8 16h.01" /><path d="M12 16h.01" /><path d="M16 16h.01" /></svg> Container Fluid',
     content: `
         <div class="container-fluid">
-        <div style="flex:1; min-height: 100px; border:1px dotted #aaa; padding:0px;" data-gjs-droppable="true" data-gjs-highlightable="true" draggable="true" data-gjs-name="Column"></div>
+        <div class="hide-web" style="flex:1; min-height: 100px; border:1px dotted #aaa; padding:10px;" data-gjs-droppable="true" data-gjs-highlightable="true" draggable="true" data-gjs-name="Column"></div>
       </div>`,
     category: 'Custom',
 });

@@ -77,3 +77,13 @@ Posts
 
 Posts_meta
 - id
+
+UJI COBA 
+MENU 
+- Dashboard
+- Posts 
+- Pages 
+- Media 
+- Files
+- Users 
+- Configuration

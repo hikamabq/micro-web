@@ -25,15 +25,15 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $pages = Pages::findOne(['as_home' => 1]);
-        if(empty($pages) ){
-            return $this->redirect(['index']);
+        if(empty($pages) || $pages == null){
+            return $this->render('index');
         }else{
             $model = Posts::find()->joinWith(['page'])->where(['id_pages' => $pages->id])->orderBy(['id' => SORT_DESC])->all();
+            return $this->render(''.$pages->layout.'', [
+                'pages' => $pages,
+                'model' => $model,
+            ]);
         }
-        return $this->render(''.$pages->layout.'', [
-            'pages' => $pages,
-            'model' => $model,
-        ]);
     }
     public function actionPages($slug)
     {
