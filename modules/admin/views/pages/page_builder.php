@@ -343,11 +343,9 @@ var editor = grapesjs.init({
 editor.BlockManager.add('dynamic-post-3', {
   label: 'Dynamic Post 3',
   content: `
-    <div class="dynamic-block" data-dynamic="dynamic_post_3">
-        <div style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
-            <b>Dynamic Post 3 Column</b><br>
-            <small>Content will be taken from the $model->slug post</small>
-        </div>
+    <div class="dynamic-block" data-dynamic="dynamic_post_3" style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
+        <b>Dynamic Post 3 Column</b><br>
+        <small>Content will be taken from the $model->slug post</small>
     </div>
     <!-- dynamic_post_3 -->
   `,
@@ -357,11 +355,9 @@ editor.BlockManager.add('dynamic-post-3', {
 editor.BlockManager.add('dynamic-post-4', {
   label: 'Dynamic Post 4',
   content: `
-    <div class="dynamic-block" data-dynamic="dynamic_post_4">
-        <div style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
-            <b>Dynamic Post 4 Column</b><br>
-            <small>Content will be taken from the $model->slug post</small>
-        </div>
+    <div class="dynamic-block" data-dynamic="dynamic_post_4" style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
+        <b>Dynamic Post 4 Column</b><br>
+        <small>Content will be taken from the $model->slug post</small>
     </div>
     <!-- dynamic_post_4 -->
   `,
@@ -412,6 +408,7 @@ editor.BlockManager.add('carousel', {
 });
 
 
+
 // Load data awal jika edit
 var initialData = $initialData;
 if (initialData.html) {
@@ -436,6 +433,56 @@ editor.I18n.addMessages({
 var pn = editor.Panels;
 var modal = editor.Modal;
 var cmdm = editor.Commands;
+// Tambah tombol "Kembali ke Dashboard" paling kiri
+pn.addButton('options', {
+    id: 'back-dashboard',
+    label: 'Back to pages',
+    className: 'btn btn-light very-small px-4',
+    command: function() {
+        window.location.href = 'http://localhost:8080/admin/pages';
+    },
+    attributes: {
+        title: 'Back to pages',
+        'data-tooltip-pos': 'bottom'
+    }
+}, 0); // <-- angka 0 supaya ditempatkan di urutan pertama
+// Tambahkan tombol Save di panel options
+pn.addButton('options', {
+    id: 'save-db',
+    label: 'Save',
+    className: 'btn btn-success very-small px-4',
+    command: function() {
+        var data = {
+            css: editor.getCss(),
+            html: editor.getHtml()
+        };
+        var url = '$url';
+        const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            headers: {
+                'X-CSRF-Token': csrfToken
+            },
+            success: function(response) {
+                alert('Saved!');
+            },
+            error: function(xhr) {
+                alert('Gagal menyimpan!');
+                console.error(xhr.responseText);
+            }
+        });
+    },
+    attributes: {
+        title: 'Save Page',
+        'data-tooltip-pos': 'bottom'
+    }
+});
+
 
 // Update canvas-clear command
 cmdm.add('canvas-clear', function() {
@@ -444,61 +491,36 @@ cmdm.add('canvas-clear', function() {
     }
 });
 
-// Add info command
-var mdlClass = 'gjs-mdl-dialog-sm';
-var infoContainer = document.getElementById('info-panel');
 
-cmdm.add('open-info', function() {
-    var mdlDialog = document.querySelector('.gjs-mdl-dialog');
-    mdlDialog.className += ' ' + mdlClass;
-    infoContainer.style.display = 'block';
-    modal.setTitle('About this demo');
-    modal.setContent(infoContainer);
-    modal.open();
-    modal.getModel().once('change:open', function() {
-        mdlDialog.className = mdlDialog.className.replace(mdlClass, '');
-    })
-});
+// $('#save-btn').on('click', function() {
+//     // data = page_name + '<style>'+ editor.getCss() +'</style>' + editor.getHtml();
+//     var data = {
+//         css: editor.getCss(),
+//         html: editor.getHtml()
+//     };
+//     var url = '$url';
+//     // Ambil token dari meta tag
+//     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-pn.addButton('options', {
-    id: 'open-info',
-    className: 'fa fa-question-circle',
-    command: function() { editor.runCommand('open-info') },
-    attributes: {
-        'title': 'About',
-        'data-tooltip-pos': 'bottom',
-    },
-});
-
-$('#save-btn').on('click', function() {
-    // data = page_name + '<style>'+ editor.getCss() +'</style>' + editor.getHtml();
-    var data = {
-        css: editor.getCss(),
-        html: editor.getHtml()
-    };
-    var url = '$url';
-    // Ambil token dari meta tag
-    const csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-    $.ajax({
-        url: url, // ganti sesuai route
-        type: 'POST',
-        data: JSON.stringify(data),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        headers: {
-            'X-CSRF-Token': csrfToken // <--- kirim di header
-        },
-        success: function(response) {
-            // console.log(response);
-            alert('Saved');
-        },
-        error: function(xhr) {
-            // console.error(xhr.responseText);
-        }
-    });
-    // alert(JSON.stringify(data));
-});
+//     $.ajax({
+//         url: url, // ganti sesuai route
+//         type: 'POST',
+//         data: JSON.stringify(data),
+//         contentType: 'application/json; charset=utf-8',
+//         dataType: 'json',
+//         headers: {
+//             'X-CSRF-Token': csrfToken // <--- kirim di header
+//         },
+//         success: function(response) {
+//             // console.log(response);
+//             alert('Saved');
+//         },
+//         error: function(xhr) {
+//             // console.error(xhr.responseText);
+//         }
+//     });
+//     // alert(JSON.stringify(data));
+// });
 
 // // Add and beautify tooltips
 [['sw-visibility', 'Show Borders'], ['preview', 'Preview'], ['fullscreen', 'Fullscreen'],
