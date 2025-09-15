@@ -65,7 +65,7 @@ class Posts extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_pages' => 'Page',
+            'id_pages' => 'Show in Page',
             'title' => 'Title',
             'slug' => 'Slug',
             'cover_image' => 'Cover Image',

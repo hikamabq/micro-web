@@ -43,6 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <span><?= $model->author ?></span>
                 </div>
                 <div class="mb-3">
+                    <b class="d-block">Show in page</b>
+                    <span><?= $model->page->name ?></span>
+                </div>
+                <div class="mb-3">
                     <b class="d-block">Created At</b>
                     <span><?= date('d M Y', strtotime($model->created_at)) ?></span>
                 </div>

@@ -7,6 +7,7 @@ use app\assets\GrapesJsAsset;
 /* @var $this yii\web\View */
 /* @var $model app\models\Page */
 $url = Url::to(["save", "id" => $model->id]);
+$backUrl = Url::to(['/admin/pages']);
 
 $this->title = $model->isNewRecord ? 'Buat Halaman Baru' : 'Edit Halaman: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Halaman', 'url' => ['index']];
@@ -39,6 +40,14 @@ var editor = grapesjs.init({
     fromElement: false,
     showOffsets: true,
     storageManager: false,
+    canvas: {
+        styles: [
+            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
+        ],
+        scripts: [
+            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js'
+        ]
+    },
     assetManager: {
         embedAsBase64: true,
         assets: $images
@@ -340,28 +349,29 @@ var editor = grapesjs.init({
     },
 });
 
+
 editor.BlockManager.add('dynamic-post-3', {
-  label: 'Dynamic Post 3',
+  label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#000"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-news"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" /><path d="M8 8l4 0" /><path d="M8 12l4 0" /><path d="M8 16l4 0" /></svg> Dynamic Post 3',
   content: `
-    <div class="dynamic-block" data-dynamic="dynamic_post_3" style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
+    <div class="dynamic-block hide-web " data-dynamic="dynamic_post_3" style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
         <b>Dynamic Post 3 Column</b><br>
         <small>Content will be taken from the $model->slug post</small>
     </div>
     <!-- dynamic_post_3 -->
   `,
-  category: 'Custom',
+  category: 'Post',
 });
 
 editor.BlockManager.add('dynamic-post-4', {
-  label: 'Dynamic Post 4',
+  label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#000"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-news"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" /><path d="M8 8l4 0" /><path d="M8 12l4 0" /><path d="M8 16l4 0" /></svg> Dynamic Post 4',
   content: `
-    <div class="dynamic-block" data-dynamic="dynamic_post_4" style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
+    <div class="dynamic-block hide-web" data-dynamic="dynamic_post_4" style="border:1px dashed #aaa; padding:20px; text-align:center; background:#fafafa;">
         <b>Dynamic Post 4 Column</b><br>
         <small>Content will be taken from the $model->slug post</small>
     </div>
     <!-- dynamic_post_4 -->
   `,
-  category: 'Custom',
+  category: 'Post',
 });
 
 editor.BlockManager.add('container', {
@@ -370,7 +380,7 @@ editor.BlockManager.add('container', {
         <div class="container">
         <div class="hide-web" style="flex:1; min-height: 100px; border:1px dotted #aaa; padding:10px;" data-gjs-droppable="true" data-gjs-highlightable="true" draggable="true" data-gjs-name="Column"></div>
       </div>`,
-    category: 'Custom',
+    category: 'Container',
 });
 editor.BlockManager.add('container-fluid', {
     label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="48"  height="48"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brackets-contain"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4h-4v16h4" /><path d="M17 4h4v16h-4" /><path d="M8 16h.01" /><path d="M12 16h.01" /><path d="M16 16h.01" /></svg> Container Fluid',
@@ -378,8 +388,78 @@ editor.BlockManager.add('container-fluid', {
         <div class="container-fluid">
         <div class="hide-web" style="flex:1; min-height: 100px; border:1px dotted #aaa; padding:10px;" data-gjs-droppable="true" data-gjs-highlightable="true" draggable="true" data-gjs-name="Column"></div>
       </div>`,
-    category: 'Custom',
+    category: 'Container',
 });
+
+editor.BlockManager.add('hero-1', {
+    label: `
+<svg width="62" height="32" viewBox="0 0 62 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="60" height="30" stroke="white" stroke-width="0.5"/>
+<rect x="22" y="8" width="19" height="2" fill="white"/>
+<rect x="20" y="20" width="11" height="3" fill="white"/>
+<rect x="32" y="20" width="11" height="3" fill="white"/>
+<rect x="9" y="13" width="43" height="1" fill="white"/>
+<rect x="9" y="15" width="43" height="1" fill="white"/>
+<rect x="9" y="17" width="43" height="1" fill="white"/>
+</svg>
+
+ Hero 1`,
+    content: `
+    <div class="px-4 py-5 my-5 text-center"> <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> <h1 class="display-5 fw-bold text-body-emphasis">Centered hero</h1> <div class="col-lg-6 mx-auto"> <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p> <div class="d-grid gap-2 d-sm-flex justify-content-sm-center"> <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button> <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button> </div> </div> </div>`,
+    category: 'Heroes',
+});
+editor.BlockManager.add('hero-2', {
+    label: `<svg width="60" height="30" viewBox="0 0 60 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.25" y="0.25" width="59.5" height="29.5" stroke="white" stroke-width="0.5"/>
+<rect x="19" y="5" width="19" height="2" fill="white"/>
+<rect x="17" y="17" width="11" height="3" fill="white"/>
+<rect x="29" y="17" width="11" height="3" fill="white"/>
+<rect x="8" y="22" width="40" height="8" fill="white"/>
+<rect x="7" y="10" width="42" height="1" fill="white"/>
+<rect x="7" y="12" width="42" height="1" fill="white"/>
+<rect x="7" y="14" width="42" height="1" fill="white"/>
+</svg> Hero 2`,
+    content: `
+    <div class="px-4 pt-5 my-5 text-center border-bottom"> <h1 class="display-4 fw-bold text-body-emphasis">Centered screenshot</h1> <div class="col-lg-6 mx-auto"> <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p> <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"> <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Primary button</button> <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button> </div> </div> <div class="overflow-hidden" style="max-height: 30vh;"> <div class="container px-5"> <img src="bootstrap-docs.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy"> </div> </div> </div>
+    `,
+    category: 'Heroes',
+});
+editor.BlockManager.add('hero-3', {
+    label: `<svg width="62" height="32" viewBox="0 0 62 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="60" height="30" stroke="white" stroke-width="0.5"/>
+<rect x="4" y="7" width="19" height="2" fill="white"/>
+<rect x="4" y="19" width="11" height="3" fill="white"/>
+<rect x="16" y="19" width="11" height="3" fill="white"/>
+<rect x="40" y="7" width="17" height="16" fill="white"/>
+<rect x="4" y="12" width="32" height="1" fill="white"/>
+<rect x="4" y="14" width="32" height="1" fill="white"/>
+<rect x="4" y="16" width="32" height="1" fill="white"/>
+</svg>
+ Hero 3`,
+    content: `
+    <div class="container col-xxl-8 px-4 py-5"> <div class="row flex-lg-row-reverse align-items-center g-5 py-5"> <div class="col-10 col-sm-8 col-lg-6"> <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"> </div> <div class="col-lg-6"> <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1> <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p> <div class="d-grid gap-2 d-md-flex justify-content-md-start"> <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button> <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> </div> </div> </div> </div>
+    `,
+    category: 'Heroes',
+});
+editor.BlockManager.add('hero-4', {
+    label: `<svg width="60" height="30" viewBox="0 0 60 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.25" y="0.25" width="59.5" height="29.5" stroke="white" stroke-width="0.5"/>
+<rect x="3" y="6" width="19" height="2" fill="white"/>
+<rect x="3" y="18" width="11" height="3" fill="white"/>
+<rect x="15" y="18" width="11" height="3" fill="white"/>
+<rect x="46" y="2" width="14" height="25" fill="white"/>
+<rect x="3" y="11" width="32" height="1" fill="white"/>
+<rect x="3" y="13" width="32" height="1" fill="white"/>
+<rect x="3" y="15" width="32" height="1" fill="white"/>
+</svg>
+ Hero 4`,
+    content: `
+    <div class="container-fluid"><div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"> <div class="col-lg-7 p-3 p-lg-5 pt-lg-3"> <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Border hero with cropped image and shadows</h1> <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p> <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3"> <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button> <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> </div> </div> <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg"> <img class="rounded-lg-3" src="bootstrap-docs.png" alt="" width="720"> </div> </div></div>
+    `,
+    category: 'Heroes',
+});
+
+
 editor.BlockManager.add('carousel', {
     label: '<svg  xmlns="http://www.w3.org/2000/svg"  width="48"  height="48"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-slideshow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l.01 0" /><path d="M3 3m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /><path d="M3 13l4 -4a3 5 0 0 1 3 0l4 4" /><path d="M13 12l2 -2a3 5 0 0 1 3 0l3 3" /><path d="M8 21l.01 0" /><path d="M12 21l.01 0" /><path d="M16 21l.01 0" /></svg> Carousel',
     content: `
@@ -404,7 +484,7 @@ editor.BlockManager.add('carousel', {
     <span class="visually-hidden">></span>
   </button>
 </div>`,
-    category: 'Custom',
+    category: 'Carousel',
 });
 
 
@@ -437,9 +517,9 @@ var cmdm = editor.Commands;
 pn.addButton('options', {
     id: 'back-dashboard',
     label: 'Back to pages',
-    className: 'btn btn-light very-small px-4',
+    className: 'btn btn-light small-text px-4',
     command: function() {
-        window.location.href = 'http://localhost:8080/admin/pages';
+        window.location.href = '{$backUrl}';
     },
     attributes: {
         title: 'Back to pages',
@@ -450,7 +530,7 @@ pn.addButton('options', {
 pn.addButton('options', {
     id: 'save-db',
     label: 'Save',
-    className: 'btn btn-success very-small px-4',
+    className: 'btn btn-success small-text px-4',
     command: function() {
         var data = {
             css: editor.getCss(),
@@ -491,37 +571,6 @@ cmdm.add('canvas-clear', function() {
     }
 });
 
-
-// $('#save-btn').on('click', function() {
-//     // data = page_name + '<style>'+ editor.getCss() +'</style>' + editor.getHtml();
-//     var data = {
-//         css: editor.getCss(),
-//         html: editor.getHtml()
-//     };
-//     var url = '$url';
-//     // Ambil token dari meta tag
-//     const csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-//     $.ajax({
-//         url: url, // ganti sesuai route
-//         type: 'POST',
-//         data: JSON.stringify(data),
-//         contentType: 'application/json; charset=utf-8',
-//         dataType: 'json',
-//         headers: {
-//             'X-CSRF-Token': csrfToken // <--- kirim di header
-//         },
-//         success: function(response) {
-//             // console.log(response);
-//             alert('Saved');
-//         },
-//         error: function(xhr) {
-//             // console.error(xhr.responseText);
-//         }
-//     });
-//     // alert(JSON.stringify(data));
-// });
-
 // // Add and beautify tooltips
 [['sw-visibility', 'Show Borders'], ['preview', 'Preview'], ['fullscreen', 'Fullscreen'],
  ['export-template', 'Export'], ['undo', 'Undo'], ['redo', 'Redo'],
@@ -544,7 +593,17 @@ for (var i = 0; i < titles.length; i++) {
     el.setAttribute('data-tooltip', title);
     el.setAttribute('title', '');
 }
+editor.on('load', () => {
+  editor.BlockManager.getCategories().forEach(cat => {
+    // Tutup semua kategori
+    cat.set('open', false);
 
+    // Buka hanya kategori "Custom"
+    if (cat.get('id') === 'Bootstrap' || cat.get('label') === 'Bootstrap') {
+      cat.set('open', true);
+    }
+  });
+});
 // // Do stuff on load
 // editor.on('load', function() {
 //     var $ = grapesjs.$;

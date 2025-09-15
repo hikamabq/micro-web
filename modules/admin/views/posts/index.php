@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 ],
                 [
-                    'attribute' => 'page',
+                    'attribute' => 'id_pages',
                     'value' => 'page.name'
                 ],
                 // 'author',

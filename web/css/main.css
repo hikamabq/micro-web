@@ -48,8 +48,8 @@ ul {
 		height: auto;
 	}
 }
-.dynamic-block > div {
-    display: none; /* preview hanya muncul di editor, tidak di website */
+.dynamic-block {
+    display: none !important; /* preview hanya muncul di editor, tidak di website */
 }
 .hide-web{
 	border: none !important;
