@@ -1,3 +1,6 @@
+:root{
+  --gjs-left-width: 17% !important;
+}
 body,
 html {
   min-height: 100%;
@@ -180,4 +183,16 @@ html {
 }
 .gjs-layer.gjs-selected .gjs-layer-item {
   background-color: rgba(255, 255, 255, 0.1) !important;
+}
+.gjs-pn-views-container {
+  height: 100%;
+  padding: 42px 0 0;
+  right: 0;
+  width: var(--gjs-left-width);
+  overflow: auto;
+  box-shadow: 0 0 5px var(--gjs-main-dark-color);
+}
+.gjs-block {
+  padding: 0.5em !important;
+  min-height: 50px !important;
 }

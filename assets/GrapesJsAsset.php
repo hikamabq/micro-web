@@ -39,6 +39,7 @@ class GrapesJsAsset extends AssetBundle
         'https://unpkg.com/grapesjs-typed@1.0.5',
         'https://unpkg.com/grapesjs-style-bg@2.0.1',
         'pagebuilder/js/toastr.min.js',
+        'pagebuilder/js/custom-editor.js',
         'pagebuilder/js/grapes.min.js',
     ];
     
