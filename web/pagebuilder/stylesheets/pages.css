@@ -193,6 +193,6 @@ html {
   box-shadow: 0 0 5px var(--gjs-main-dark-color);
 }
 .gjs-block {
-  padding: 0.5em !important;
+  padding: 0em !important;
   min-height: 50px !important;
 }
