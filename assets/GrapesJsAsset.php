@@ -41,6 +41,7 @@ class GrapesJsAsset extends AssetBundle
         'pagebuilder/js/toastr.min.js',
         'pagebuilder/js/custom-editor.js',
         'pagebuilder/js/grapes.min.js',
+        'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js'
     ];
     
     public $depends = [

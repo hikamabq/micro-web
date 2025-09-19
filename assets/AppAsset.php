@@ -22,9 +22,11 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/bootstrap.min.css',
         'css/main.css',
+        'https://unpkg.com/aos@2.3.4/dist/aos.css'
     ];
     public $js = [
         'js/bootstrap.bundle.min.js',
+        'https://unpkg.com/aos@2.3.4/dist/aos.js' 
         // 'js/custom.js',
     ];
     public $depends = [

@@ -179,7 +179,7 @@ html {
 /* Quaternary color for the text color */
 .gjs-four-color,
 .gjs-four-color-h:hover {
-  color: #4f46e5 !important;
+  color: #14b8a6 !important;
 }
 .gjs-layer.gjs-selected .gjs-layer-item {
   background-color: rgba(255, 255, 255, 0.1) !important;

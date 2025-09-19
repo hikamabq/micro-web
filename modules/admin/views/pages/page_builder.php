@@ -42,10 +42,12 @@ var editor = grapesjs.init({
     storageManager: false,
     canvas: {
         styles: [
-            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
+            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css',
+            'https://unpkg.com/aos@2.3.4/dist/aos.css' // AOS CSS
         ],
         scripts: [
-            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js'
+            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
+            'https://unpkg.com/aos@2.3.4/dist/aos.js'  // AOS JS
         ]
     },
     assetManager: {
@@ -476,51 +478,52 @@ editor.on('load', () => {
     });
 });
 // // Do stuff on load
-// editor.on('load', function() {
-//     var $ = grapesjs.$;
+editor.on('load', function() {
+    var $ = grapesjs.$;
 
-//     // Show borders by default
-//     pn.getButton('options', 'sw-visibility').set({
-//         command: 'core:component-outline',
-//         'active': true,
-//     });
+    // Show borders by default
+    pn.getButton('options', 'sw-visibility').set({
+        command: 'core:component-outline',
+        'active': true,
+    });
 
-//     // Show logo with the version
-//     var logoCont = document.querySelector('.gjs-logo-cont');
-//     document.querySelector('.gjs-logo-version').innerHTML = 'v' + grapesjs.version;
-//     var logoPanel = document.querySelector('.gjs-pn-commands');
-//     logoPanel.appendChild(logoCont);
+    // Show logo with the version
+    var logoCont = document.querySelector('.gjs-logo-cont');
+    document.querySelector('.gjs-logo-version').innerHTML = 'v' + grapesjs.version;
+    var logoPanel = document.querySelector('.gjs-pn-commands');
+    logoPanel.appendChild(logoCont);
 
-//     // Load and show settings and style manager
-//     var openTmBtn = pn.getButton('views', 'open-tm');
-//     openTmBtn && openTmBtn.set('active', 1);
-//     var openSm = pn.getButton('views', 'open-sm');
-//     openSm && openSm.set('active', 1);
+    // Load and show settings and style manager
+    var openTmBtn = pn.getButton('views', 'open-tm');
+    openTmBtn && openTmBtn.set('active', 1);
+    var openSm = pn.getButton('views', 'open-sm');
+    openSm && openSm.set('active', 1);
 
-//     // Remove trait view
-//     pn.removeButton('views', 'open-tm');
+    // Remove trait view
+    pn.removeButton('views', 'open-tm');
 
-//     // Add Settings Sector
-//     var traitsSector = $('<div class="gjs-sm-sector no-select">'+
-//         '<div class="gjs-sm-sector-title"><span class="icon-settings fa fa-cog"></span> <span class="gjs-sm-sector-label">Settings</span></div>' +
-//         '<div class="gjs-sm-properties" style="display: none;"></div></div>');
-//     var traitsProps = traitsSector.find('.gjs-sm-properties');
-//     traitsProps.append($('.gjs-traits-cs'));
-//     $('.gjs-sm-sectors').before(traitsSector);
-//     traitsSector.find('.gjs-sm-sector-title').on('click', function(){
-//         var traitStyle = traitsProps.get(0).style;
-//         var hidden = traitStyle.display == 'none';
-//         if (hidden) {
-//             traitStyle.display = 'block';
-//         } else {
-//             traitStyle.display = 'none';
-//         }
-//     });
+    // Add Settings Sector
+    var traitsSector = $('<div class="gjs-sm-sector no-select">'+
+        '<div class="gjs-sm-sector-title"><span class="icon-settings fa fa-cog"></span> <span class="gjs-sm-sector-label">Settings</span></div>' +
+        '<div class="gjs-sm-properties" style="display: none;"></div></div>');
+    var traitsProps = traitsSector.find('.gjs-sm-properties');
+    traitsProps.append($('.gjs-traits-cs'));
+    $('.gjs-sm-sectors').before(traitsSector);
+    traitsSector.find('.gjs-sm-sector-title').on('click', function(){
+        var traitStyle = traitsProps.get(0).style;
+        var hidden = traitStyle.display == 'none';
+        if (hidden) {
+            traitStyle.display = 'block';
+        } else {
+            traitStyle.display = 'none';
+        }
+    });
 
-//     // Open block manager
-//     var openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
-//     openBlocksBtn && openBlocksBtn.set('active', 1);
-// });
+    // Open block manager
+    var openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
+    openBlocksBtn && openBlocksBtn.set('active', 1);
+});
+
 JS;
 
 $this->registerJs($js);
